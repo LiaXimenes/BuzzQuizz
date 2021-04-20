@@ -17,6 +17,7 @@ body{
 
 .criarQuizz {
   border: 1px #d4d4d4 dashed;
+  border-radius: 5px;
   margin: 77px auto;
   width: 80%;
   height: 181px;
@@ -43,6 +44,8 @@ body{
   border-radius: 50px;
   color: #ec362d;
   font-size: 21px;
+  height: 40px;
+  width: 151px;
 }
 
 .criarQuizz input:focus{
