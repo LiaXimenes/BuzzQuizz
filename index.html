@@ -32,6 +32,33 @@
 
     <div class="criandoUmQuizz escondido">
         <p>Comece pelo começo</p>
+        <div class="caixaDePerguntas">
+            <input type="text" value="Título do seu quizz">
+            <input type="text" value="URL da imagem do seu quizz">
+            <input type="text" value="Quantidade de perguntas do quizz">
+            <input type="text" value="Quantidade de níveis do quizz">
+        </div>
+           <input onclick="crieSuasPerguntas()" type="button" value="Prosseguir para criar perguntas"> 
+    </div>
+
+    <div class="criarPerguntas escondido">
+        <p>Crie suas perguntas</p>
+        <div class="caixaDePerguntas">
+            <p>Pergunta 1</p>
+            <input type="text" value="Título do seu quizz">
+            <input type="text" value="URL da imagem do seu quizz">
+            <p>Resposta correta</p>
+            <input type="text" value="Quantidade de perguntas do quizz">
+            <input type="text" value="Quantidade de níveis do quizz">
+            <p>Respostas incorretas</p>
+            <input type="text" value="Quantidade de perguntas do quizz">
+            <input type="text" value="Quantidade de níveis do quizz">
+            <input type="text" value="Quantidade de perguntas do quizz">
+            <input type="text" value="Quantidade de níveis do quizz">
+            <input type="text" value="Quantidade de perguntas do quizz">
+            <input type="text" value="Quantidade de níveis do quizz">
+        </div>
+           <input onclick="crieSuasPerguntas()" type="button" value="Prosseguir para criar perguntas">
     </div>
     
     <!--Seus quizzes (só pra deixar no esquema kkkkkkkk)-->
@@ -79,39 +106,9 @@
 
     <!--Div com conteudo de quizzes-->
     <div class="todosQuizzes">
-        <h1>Todos os Quizzes</h1> <!--ajeitei o css e tá aceitando o h1-->
+        <h1>Todos os Quizzes</h1> 
         <ul class=triosDeQuizzes>
-            <!--
-            <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
-                <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
-            </li>
-
-            <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
-                <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
-            </li>
-
-            <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
-                <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
-            </li>
-        
-            <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
-                <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
-            </li>
-
-            <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
-                <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
-            </li>
-
-            <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
-                <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
-            </li>
-        -->
+           
         </ul>
     </div>
 
@@ -119,7 +116,27 @@
     <!--Um quizz escolhido-->
     <div class="quizzEscolhido escondido">
         <img src="foto-fundo.jpg">
-      <!--<span>O quanto sobre espaço voce sabe? Sim, te engamos, é sobre o espaço</span>-->  
+      <span>O quanto sobre espaço voce sabe? Sim, te engamos, é sobre o espaço</span>
+
+      <ul class="conteinerDePerguntas">
+          <li class="pergunta"><span>Qual imagem é do SUJU?</span></li>
+          <li class="opcaoDeImg">
+              <img src="super-junior2.jpg">
+              <span>Suju</span>
+          </li>
+          <li class="opcaoDeImg">
+              <img src="super-junior2.jpg">
+              <span>Suju</span>
+          </li>
+          <li class="opcaoDeImg">
+              <img src="super-junior2.jpg">
+              <span>Suju</span>
+          </li>
+          <li class="opcaoDeImg">
+              <img src="super-junior2.jpg">
+              <span>Suju</span>
+          </li>
+      </ul>
 
 
     </div>

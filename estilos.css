@@ -14,6 +14,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -23,6 +27,7 @@ body {
   border: 1px #d4d4d4 dashed;
   border-radius: 5px;
   margin: 77px auto;
+  margin-top: 146px;
   width: 80%;
   height: 181px;
   display: flex;
@@ -60,6 +65,7 @@ body {
 .quizzesAdicionados {
   width: 80%;
   margin: 48px auto;
+  margin-top: 117px;
 }
 
 .quizzesAdicionados > span {
@@ -140,28 +146,103 @@ body {
 .quizzEscolhido img {
   width: 100%;
   height: 277px;
+  margin-top: 69px;
   position: relative;
 }
-/*
+
 .quizzEscolhido span {
   position: absolute;
   z-index: 2;
   font-family: "Roboto", sans-serif;
   color: #ffffff;
   font-size: 39px;
-  top: 0;
-  left: 0;
+  top: 170px; /*colocar de alguma forma no centro sem ser por px*/
+  left: 40px;
 }
-*/
+
+.conteinerDePerguntas {
+  width: 688px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.pergunta {
+  width: 688px;
+  height: 138px;
+  background: chartreuse;
+}
+
+.pergunta span {
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 23px;
+}
+
+.opcaoDeImg img {
+  width: 330px;
+  height: 175px;
+}
+
+/* tela de criar quizz */
+.criandoUmQuizz {
+  margin: 140px auto;
+  width: 45%;
+  text-align: center;
+}
+
+.criandoUmQuizz p {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+  color: #000;
+  text-align: center;
+  margin-bottom: 27px;
+}
+
+.caixaDePerguntas {
+  background-color: #ffffff;
+  height: 256px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.caixaDePerguntas input {
+  width: 90%;
+  height: 46px;
+  border: 1px #bababa solid;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+  font-size: 19px;
+  font-style: italic;
+  color: #bababa;
+}
+
+.caixaDePerguntas input:focus {
+  outline-style: none;
+}
+
+.criandoUmQuizz > input {
+  margin-top: 85px;
+  width: 368, 86px;
+  height: 54px;
+  background-color: #ec362d;
+  border: none;
+  border-radius: 15px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  color: #fff5f4;
+  font-size: 21px;
+}
+
+.criandoUmQuizz > input {
+  outline-style: none;
+}
 
 /* versão mobile */
 
-@media (max-width: 600px) {
-  .quizz {
-    margin: auto;
-    margin-bottom: 14px;
-  }
-
+@media (max-width: 850px) {
   .todosQuizzes {
     margin: auto;
   }
@@ -170,7 +251,29 @@ body {
     margin: 35px auto;
   }
 
+  .criarQuizz {
+    margin: 35px auto;
+    margin-top: 104px;
+  }
+
   .quizzesAdicionados {
     margin: 38px auto;
+    margin-top: 107px;
+  }
+
+  .criandoUmQuizz {
+    margin: 106px auto;
+    width: 100%;
+  }
+
+  .criandoUmQuizz p {
+    font-size: 20px;
+    margin-bottom: 29px;
+  }
+
+  .criandoUmQuizz > input {
+    margin-top: 29px;
+    width: 324px;
+    font-size: 18px;
   }
 }
