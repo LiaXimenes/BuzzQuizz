@@ -121,3 +121,30 @@ body {
   color: #ffffff;
   font-size: 19px;
 }
+
+/* Quizz Escolhido*/
+
+.escondido {
+  display: none;
+}
+
+.quizzEscolhido {
+  width: 100%;
+  background: #e5e5e5;
+}
+
+.quizzEscolhido img {
+  width: 100%;
+  height: 277px;
+  position: relative;
+}
+
+.quizzEscolhido span {
+  position: absolute;
+  z-index: 2;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 39px;
+  top: 0;
+  left: 0;
+}
