@@ -1,5 +1,5 @@
-body{
-    background-color: #FAFAFA;
+body {
+  background-color: #fafafa;
 }
 
 /* topo da página */
@@ -42,8 +42,8 @@ body{
   text-align: center;
 }
 
-.criarQuizz input{
-  background-color: #FAFAFA;
+.criarQuizz input {
+  background-color: #fafafa;
   border: 1px #ec362d dashed;
   border-radius: 50px;
   color: #ec362d;
@@ -52,53 +52,63 @@ body{
   width: 151px;
 }
 
-.criarQuizz input:focus{
-    outline-style: none;
-  }
+.criarQuizz input:focus {
+  outline-style: none;
+}
 
 /* quizz adicionados */
-.quizzesAdicionados{
-    width: 70%;
-    margin: 48px auto ;
+.quizzesAdicionados {
+  width: 70%;
+  margin: 48px auto;
 }
 
-.quizzesAdicionados span{
-    display: flex;
-    align-items: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    color: #000;
-    margin-bottom: 16px;   
+.quizzesAdicionados span {
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 16px;
 }
 
-.quizzesAdicionados span ion-icon{
-    font-size: 32px;
-    color: #EC362D;
-    margin-left: 17px;
+.quizzesAdicionados span ion-icon {
+  font-size: 32px;
+  color: #ec362d;
+  margin-left: 17px;
 }
 
 /* lista de quizzes */
 
+.titulo {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .todosQuizzes {
-  width: 1051px;
-  height: 300px;
-  margin-left: 194px;
+  width: 80%;
+  height: 700px;
+  margin: auto;
+}
+
+.triosDeQuizzes {
   display: flex;
   align-items: center;
+  margin-top: 12px;
 }
 
 .quizz {
   width: 340px;
   height: 181px;
   margin-right: 15px;
-  background: red;
   position: relative;
 }
 
-img {
+.quizz img {
   width: 340px;
   height: 181px;
+  border-radius: 5px;
 }
 
 .descricaoDoQuizz {
@@ -107,4 +117,7 @@ img {
   z-index: 2;
   bottom: 10px;
   left: 18px;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 19px;
 }
