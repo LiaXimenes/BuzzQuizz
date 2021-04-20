@@ -27,11 +27,13 @@ function sumirTelaPrincipal() {
 }
 
 function criarQuizz() {
-    sumirTelaPrincipal()
+    sumirTelaPrincipal();
 
     console.log("criar quizz, aguarde");
 
-    //adicionar tela pra criar quizz
+   let paginaDaCriacao = document.querySelector(".criandoUmQuizz");
+   console.log(paginaDaCriacao);
+   paginaDaCriacao.classList.remove("escondido");
 }
 
 function irParaQuizz(elemento){
