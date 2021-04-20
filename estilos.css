@@ -110,6 +110,9 @@ body {
   width: 340px;
   height: 181px;
   border-radius: 5px;
+  /*
+  -webkit-mask-image: linear-gradient(to top, transparent 10%, black 100%);
+  */
 }
 
 .descricaoDoQuizz {
