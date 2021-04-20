@@ -1,3 +1,6 @@
+body{
+    background-color: #FAFAFA;
+}
 .containerTopo {
   background-color: #ec362d;
   font-family: "Roboto", sans-serif;
@@ -14,7 +17,8 @@
 
 .criarQuizz {
   border: 1px #d4d4d4 dashed;
-  margin: 77px 194px;
+  margin: 77px auto;
+  width: 80%;
   height: 181px;
   display: flex;
   justify-content: space-around;
@@ -31,12 +35,17 @@
   font-size: 20px;
 }
 
-.criarQuizz p:last-child {
+.criarQuizz input{
+  background-color: #FAFAFA;
   border: 1px #ec362d dashed;
   border-radius: 50px;
   color: #ec362d;
   font-size: 21px;
 }
+
+.criarQuizz input:focus{
+    outline-style: none;
+  }
 
 .todosQuizzes {
   width: 1051px;
