@@ -104,15 +104,16 @@ body {
   height: 181px;
   position: relative;
   margin-bottom: 12px;
+  background-color: black;
+  border-radius: 5px;
 }
 
 .quizz img {
   width: 340px;
   height: 181px;
   border-radius: 5px;
-  /*
-  -webkit-mask-image: linear-gradient(to top, transparent 10%, black 100%);
-  */
+  -webkit-mask-image: linear-gradient(to top, transparent 10%, black 65%);
+  
 }
 
 .descricaoDoQuizz {
