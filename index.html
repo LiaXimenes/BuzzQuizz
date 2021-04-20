@@ -29,8 +29,8 @@
     </div>
     
     <!--Seus quizzes (só pra deixar no esquema kkkkkkkk)-->
-<!--
-    <div class="quizzesAdicionados">
+
+    <div class="quizzesAdicionados escondido">
         <span>
             Seus Quizzes
             <ion-icon name="add-circle"></ion-icon>
@@ -48,39 +48,38 @@
         </ul>
         
     </div>
--->
+
     <!--Div com conteudo de quizzes-->
     <div class="todosQuizzes">
         <h1 class="titulo">Todos os Quizzes</h1> <!--por algum motivo bizarro o css nao aceita a confiração que eu fiz no h1, tive que colocar uma class nele-->
         <ul class=triosDeQuizzes>
             <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz()">
+                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
                 <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
             </li>
 
             <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz()">
+                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
                 <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
             </li>
 
             <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz()">
+                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
                 <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
             </li>
-        </ul>
-        <ul class=triosDeQuizzes>
+        
             <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz()">
-                <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
-            </li>
-
-            <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz()">
+                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
                 <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
             </li>
 
             <li class="quizz"> 
-                <img src="super-junior2.jpg" onclick="irParaQuizz()">
+                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
+                <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
+            </li>
+
+            <li class="quizz"> 
+                <img src="super-junior2.jpg" onclick="irParaQuizz(this)">
                 <span class="descricaoDoQuizz">O quanto sobre as bandas k-pop da SM você sabe?</span>
             </li>
         </ul>
@@ -88,7 +87,7 @@
 
 
     <!--Um quizz escolhido-->
-    <div class="quizzEscolhido">
+    <div class="quizzEscolhido escondido">
         <img src="foto-fundo.jpg">
       <!--<span>O quanto sobre espaço voce sabe? Sim, te engamos, é sobre o espaço</span>-->  
 
