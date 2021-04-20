@@ -32,8 +32,15 @@ function criarQuizz() {
     console.log("criar quizz, aguarde");
 
    let paginaDaCriacao = document.querySelector(".criandoUmQuizz");
-   console.log(paginaDaCriacao);
    paginaDaCriacao.classList.remove("escondido");
+}
+
+function crieSuasPerguntas() {
+    let paginaDaCriacao = document.querySelector(".criandoUmQuizz");
+    paginaDaCriacao.classList.add("escondido");
+
+    let paginaDePerguntas = document.querySelector(".criarPerguntas");
+    paginaDePerguntas.classList.remove("escondido");
 }
 
 function irParaQuizz(elemento){
