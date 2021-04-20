@@ -113,7 +113,6 @@ body {
   height: 181px;
   border-radius: 5px;
   -webkit-mask-image: linear-gradient(to top, transparent 10%, black 65%);
-  
 }
 
 .descricaoDoQuizz {
@@ -158,23 +157,20 @@ body {
 /* versão mobile */
 
 @media (max-width: 600px) {
+  .quizz {
+    margin: auto;
+    margin-bottom: 14px;
+  }
 
-    .quizz{
-        margin: auto;
-        margin-bottom: 14px;
-    }
+  .todosQuizzes {
+    margin: auto;
+  }
 
-    .todosQuizzes{
-        margin: auto;
-    }
+  .criarQuizz {
+    margin: 35px auto;
+  }
 
-    .criarQuizz {
-        margin: 35px auto;
-    }
-   
-    .quizzesAdicionados {
-        margin: 38px auto;
-    }
+  .quizzesAdicionados {
+    margin: 38px auto;
+  }
 }
-
-
