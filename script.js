@@ -1,4 +1,22 @@
+carregarPaginaPrincipal();
 
+function carregarPaginaPrincipal() {
+    const promessa = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes");
+    promessa.then(processarQuizz);
+}
+
+function processarQuizz(resposta) {
+    let ul = document.querySelector(".todosQuizzes ul");
+	
+    for(let i = 0; i < resposta.data.length; i++){
+        ul.innerHTML += `
+        <li class="quizz"> 
+                <img src="${resposta.data[i].image}" onclick="irParaQuizz(this)">
+                <span class="descricaoDoQuizz">${resposta.data[i].title}</span>
+        </li>`
+    }
+    
+}
 
 function sumirTelaPrincipal() {
     let adicionarQuizzEscondido = document.querySelector(".criarQuizz");
