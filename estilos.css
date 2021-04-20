@@ -33,6 +33,8 @@ body{
 .criarQuizz p:first-child {
   color: #b9b9b9;
   font-size: 20px;
+  width: 250px;
+  text-align: center;
 }
 
 .criarQuizz input{
