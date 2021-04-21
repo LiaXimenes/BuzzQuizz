@@ -176,7 +176,13 @@ function quizzCriado() {
     paginaDeQuizz.classList.add("escondido");
 
     let finalizarQuizz = document.querySelector(".quizzPronto");
-    finalizarQuizz.classList.remove("escondido");    
+    finalizarQuizz.classList.remove("escondido");  
+    
+    let informacoesDoQuizz = document.querySelector(".imagemQuizzPronto")
+    informacoesDoQuizz.innerHTML = `
+        <div><img src="${urlimagemQuizzCriado}" alt=""> </div>
+        <p>${tituloDoQuizzCriado}</p>
+    `
 }
 
 function voltarHome() {

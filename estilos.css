@@ -388,23 +388,32 @@ body {
 }
 
 .quizzPronto img {
-  margin: 46px 0;
   width: 500px;
+  height: 266px;
   border-radius: 5px;
+  -webkit-mask-image: linear-gradient(to top, transparent 10%, black 65%);
+
 }
 
-.quizzPronto > p {
+.imagemQuizzPronto p {
   font-family: "Roboto", sans-serif;
   font-size: 23px;
   color: #fff;
   width: 300px;
   position: absolute;
   z-index: 2;
-  bottom: 10px;
+  bottom: 54px;
   left: 18px;
+}
+.imagemQuizzPronto div{
+  width: 500px;
+  height: 266px;
+  background-color: black;
+  border-radius: 5px;
 }
 
 .imagemQuizzPronto {
+  margin: 46px auto;
   position: relative;
 }
 
