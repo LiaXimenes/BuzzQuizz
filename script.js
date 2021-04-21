@@ -48,16 +48,19 @@ function checkImgOnline(imageUrl){
     }   
 }
 
+let urlimagemQuizzCriado;
+let tituloDoQuizzCriado;
+let qtdDePerguntasQuizzCriado;
+let qtdDeNiveisQuizzCriado;
+
 function crieSuasPerguntas() {
     let listaDeRespostas = document.querySelector(".caixaDePerguntas").children;
     let tituloDoQuizz = listaDeRespostas[0].value;
     let urlDaImagemDoSeuQuizz = listaDeRespostas[1].value;
     let qtdDeperguntasDoSeuQuizz = listaDeRespostas[2].value;
     let qtdDeNiveisDoQuizz = listaDeRespostas[3].value
-    console.log([tituloDoQuizz, urlDaImagemDoSeuQuizz, qtdDeperguntasDoSeuQuizz, qtdDeNiveisDoQuizz]);
 
-    console.log(tituloDoQuizz.length);
-
+    //condição para passar para a próxima página
     let tituloCerto = tituloDoQuizz.length < 65 && tituloDoQuizz.length > 20;
     let urlCerto = checkImgOnline(urlDaImagemDoSeuQuizz);
     let qtdDeperguntasCerto = parseInt(qtdDeperguntasDoSeuQuizz) > 2;
@@ -65,24 +68,76 @@ function crieSuasPerguntas() {
 
 
     if(tituloCerto && urlCerto && qtdDeperguntasCerto && qtdNiveisCerto){
+        urlimagemQuizzCriado = urlDaImagemDoSeuQuizz;
+        tituloDoQuizzCriado = tituloDoQuizz;
+        qtdDePerguntasQuizzCriado = qtdDeperguntasDoSeuQuizz;
+        qtdDeNiveisQuizzCriado = qtdDeNiveisDoQuizz;
+
+
         let paginaDaCriacao = document.querySelector(".criandoUmQuizz");
         paginaDaCriacao.classList.add("escondido");
 
         let paginaDePerguntas = document.querySelector(".criarPerguntas");
         paginaDePerguntas.classList.remove("escondido");
+
+        let perguntas = document.querySelector(".criarPerguntas");
+        let numeroDePerguntas = ""
+
+        for(let i = 0; i < qtdDeperguntasDoSeuQuizz; i++){
+            numeroDePerguntas +=`
+            
+            <div class="caixaDeCriarPerguntas">
+                <div class="perguntaCriada">
+                    <p>Pergunta ${i+1}</p>
+                    <ion-icon onclick="colocarPerguntas(this,${i})" name="create-outline"></ion-icon>
+                </div>
+            </div>`
+        
+        }
+        perguntas.innerHTML = numeroDePerguntas +`<input onclick="crieSeusNiveis()" type="button" value="Prosseguir para criar níveis">`
         }
 
     else{
-        alert(`Ocorreu um erro :(\n Preencha os dados novamente`);
+        alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
     }
 }
 
+function colocarPerguntas(elemento,numeroDaPergunta) {
+    let abrirCaixa = elemento.parentNode.parentNode
+    console.log(abrirCaixa);
+    abrirCaixa.innerHTML = `
+    <div class="perguntaCriada">
+                <p>Pergunta ${numeroDaPergunta+1}</p>
+                <ion-icon name="create-outline"></ion-icon>
+            </div>
+            <input type="text" value="" placeholder="Texto da pergunta">
+            <input type="text" value="" placeholder="Cor de fundo da pergunta">
+            <p>Resposta correta</p>
+            <input type="text" value="" placeholder="Resposta correta">
+            <input type="text" value="" placeholder="URL da imagem">
+            <p>Respostas incorretas</p>
+            <input type="text" value="" placeholder="Resposta incorreta 1">
+            <input type="text" value="" placeholder="URL da imagem 1">
+            <input type="text" value="" placeholder="Resposta incorreta 2">
+            <input type="text" value="" placeholder="URL da imagem 2">
+            <input type="text" value="" placeholder="Resposta incorreta 3">
+            <input type="text" value="" placeholder="URL da imagem 3">`
+    console.log (numeroDaPergunta);
+}
+
 function crieSeusNiveis() {
-    let paginaDePerguntas = document.querySelector(".criarPerguntas");
+
+
+
+    if(condicao){let paginaDePerguntas = document.querySelector(".criarPerguntas");
     paginaDePerguntas.classList.add("escondido");
 
     let paginaDeQuizz = document.querySelector(".quizzNiveis");
-    paginaDeQuizz.classList.remove("escondido");
+    paginaDeQuizz.classList.remove("escondido");}
+
+    else{
+        alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
+    }
     
 }
 
