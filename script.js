@@ -26,6 +26,8 @@ function sumirTelaPrincipal() {
     quizzEscondido.classList.add("escondido");
 }
 
+// criar quizz
+
 function criarQuizz() {
     sumirTelaPrincipal();
 
@@ -35,12 +37,44 @@ function criarQuizz() {
    paginaDaCriacao.classList.remove("escondido");
 }
 
-function crieSuasPerguntas() {
-    let paginaDaCriacao = document.querySelector(".criandoUmQuizz");
-    paginaDaCriacao.classList.add("escondido");
+// verificar imagem
+function checkImgOnline(imageUrl){
+    var img = new Image();        
+    try {
+        img.src = imageUrl;
+        return true;
+    } catch(err) {
+        return false;
+    }   
+}
 
-    let paginaDePerguntas = document.querySelector(".criarPerguntas");
-    paginaDePerguntas.classList.remove("escondido");
+function crieSuasPerguntas() {
+    let listaDeRespostas = document.querySelector(".caixaDePerguntas").children;
+    let tituloDoQuizz = listaDeRespostas[0].value;
+    let urlDaImagemDoSeuQuizz = listaDeRespostas[1].value;
+    let qtdDeperguntasDoSeuQuizz = listaDeRespostas[2].value;
+    let qtdDeNiveisDoQuizz = listaDeRespostas[3].value
+    console.log([tituloDoQuizz, urlDaImagemDoSeuQuizz, qtdDeperguntasDoSeuQuizz, qtdDeNiveisDoQuizz]);
+
+    console.log(tituloDoQuizz.length);
+
+    let tituloCerto = tituloDoQuizz.length < 65 && tituloDoQuizz.length > 20;
+    let urlCerto = checkImgOnline(urlDaImagemDoSeuQuizz);
+    let qtdDeperguntasCerto = parseInt(qtdDeperguntasDoSeuQuizz) > 2;
+    let qtdNiveisCerto = parseInt(qtdDeNiveisDoQuizz) > 1;
+
+
+    if(tituloCerto && urlCerto && qtdDeperguntasCerto && qtdNiveisCerto){
+        let paginaDaCriacao = document.querySelector(".criandoUmQuizz");
+        paginaDaCriacao.classList.add("escondido");
+
+        let paginaDePerguntas = document.querySelector(".criarPerguntas");
+        paginaDePerguntas.classList.remove("escondido");
+        }
+
+    else{
+        alert(`Ocorreu um erro :(\n Preencha os dados novamente`);
+    }
 }
 
 function crieSeusNiveis() {
@@ -72,6 +106,8 @@ function voltarHome() {
 
     carregarPaginaPrincipal();
 }
+
+//fim de criar quizz
 
 function irParaQuizz(elemento){
     sumirTelaPrincipal();
