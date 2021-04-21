@@ -167,7 +167,6 @@ body {
 }
 
 .conteinerDePerguntas {
-  padding: 35px 27px;
   width: 759px;
   height: 676px;
   margin-top: 42px;
@@ -183,12 +182,12 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   width: 330px;
+  margin-left: 25px;
 }
 .conteinerDePerguntas ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 .pergunta {
   width: 688px;
@@ -198,13 +197,15 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  margin-left: 25px;
+  margin-top: 28px;
   font-family: "Roboto", sans-serif;
   color: #ffffff;
   font-size: 23px;
 }
 
 .opcaoDeImg img {
-  width: 330px;
+  width: 329px;
   height: 175px;
   margin-top: 30px;
   margin-bottom: 10px;
