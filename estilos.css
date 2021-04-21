@@ -205,13 +205,13 @@ body {
 }
 
 /* tela de criar quizz */
-.criandoUmQuizz, .criarPerguntas, .quizzNiveis{
+.criandoUmQuizz, .criarPerguntas, .quizzNiveis, .quizzPronto{
   margin: 140px auto;
   width: 45%;
   text-align: center;
 }
 
-.criandoUmQuizz p, .criarPerguntas>p, .quizzNiveis>p{
+.criandoUmQuizz p, .criarPerguntas>p, .quizzNiveis>p, .quizzPronto span{
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 23px;
@@ -253,7 +253,7 @@ body {
   outline-style: none;
 }
 
-.criandoUmQuizz > input, .criarPerguntas > input, .quizzNiveis > input {
+.criandoUmQuizz > input, .criarPerguntas > input, .quizzNiveis > input{
   margin-top: 85px;
   width: 368, 86px;
   height: 54px;
@@ -291,6 +291,47 @@ body {
 
 .caixaDeCriarPerguntas input:nth-child(9), .caixaDeCriarPerguntas input:nth-child(11){
   margin-bottom: 32px;
+}
+
+.quizzPronto img{
+  margin: 46px 0;
+  width: 500px;
+  border-radius: 5px;
+}
+
+.quizzPronto > p{
+  font-family: "Roboto", sans-serif;
+  font-size: 23px;
+  color: #fff;
+  width: 300px;
+  position: absolute;
+  z-index: 2;
+  bottom: 10px;
+  left: 18px;
+}
+
+.imagemQuizzPronto{
+  position: relative;
+
+}
+
+.botoesQuizzPronto input{
+  width: 368, 86px;
+  height: 54px;
+  background-color: #ec362d;
+  border: none;
+  border-radius: 15px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  color: #fff5f4;
+  font-size: 21px;
+}
+
+.botoesQuizzPronto p{
+  margin-top: 9px;
+  font-family: "Roboto", sans-serif;
+  font-size: 21px;
+  color: #818181;
 }
 
 /* versão mobile */

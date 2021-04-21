@@ -52,6 +52,27 @@ function crieSeusNiveis() {
     
 }
 
+function quizzCriado() {
+    let paginaDeQuizz = document.querySelector(".quizzNiveis");
+    paginaDeQuizz.classList.add("escondido");
+
+    let finalizarQuizz = document.querySelector(".quizzPronto");
+    finalizarQuizz.classList.remove("escondido");    
+}
+
+function voltarHome() {
+    let finalizarQuizz = document.querySelector(".quizzPronto");
+    finalizarQuizz.classList.add("escondido"); 
+
+    let adicionarQuizzEscondido = document.querySelector(".criarQuizz");
+    adicionarQuizzEscondido.classList.remove("escondido");
+
+    let quizzEscondido = document.querySelector(".todosQuizzes");
+    quizzEscondido.classList.remove("escondido");
+
+    carregarPaginaPrincipal();
+}
+
 function irParaQuizz(elemento){
     sumirTelaPrincipal();
 
