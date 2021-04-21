@@ -44,22 +44,37 @@
 
     <div class="criarPerguntas escondido">
         <p>Crie suas perguntas</p>
-        <div class="caixaDePerguntas">
-            <p>Pergunta 1</p>
-            <input type="text" value="Título do seu quizz">
-            <input type="text" value="URL da imagem do seu quizz">
+        <div class="caixaDeCriarPerguntas">
+            <div class="perguntaCriada">
+                <p>Pergunta 1</p>
+                <ion-icon name="create-outline"></ion-icon>
+            </div>
+            <input type="text" value="Texto da pergunta">
+            <input type="text" value="Cor de fundo da pergunta">
             <p>Resposta correta</p>
-            <input type="text" value="Quantidade de perguntas do quizz">
-            <input type="text" value="Quantidade de níveis do quizz">
+            <input type="text" value="Resposta correta">
+            <input type="text" value="URL da imagem">
             <p>Respostas incorretas</p>
-            <input type="text" value="Quantidade de perguntas do quizz">
-            <input type="text" value="Quantidade de níveis do quizz">
-            <input type="text" value="Quantidade de perguntas do quizz">
-            <input type="text" value="Quantidade de níveis do quizz">
-            <input type="text" value="Quantidade de perguntas do quizz">
-            <input type="text" value="Quantidade de níveis do quizz">
+            <input type="text" value="Resposta incorreta 1">
+            <input type="text" value="URL da imagem 1">
+            <input type="text" value="Resposta incorreta 2">
+            <input type="text" value="URL da imagem 2">
+            <input type="text" value="Resposta incorreta 3">
+            <input type="text" value="URL da imagem 3">
         </div>
-           <input onclick="crieSuasPerguntas()" type="button" value="Prosseguir para criar perguntas">
+        <div class="caixaDeCriarPerguntas">
+            <div class="perguntaCriada">
+                <p>Pergunta 2</p>
+                <ion-icon name="create-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="caixaDeCriarPerguntas">
+            <div class="perguntaCriada">
+                <p>Pergunta 3</p>
+                <ion-icon name="create-outline"></ion-icon>
+            </div>
+        </div>
+           <input onclick="crieSuasPerguntas()" type="button" value="Prosseguir para criar níveis">
            
     </div>
     
@@ -118,30 +133,46 @@
     <!--Um quizz escolhido-->
     <div class="quizzEscolhido escondido">
         <div class="fotoDeFundo">
-            <span>O quanto sobre espaço voce sabe? Sim, te engamos, é sobre o espaço</span>
+            <span>O quanto sobre espaço voce sabe? Sim, te enganamos, é sobre o espaço</span>
         </div>
 
         <div class="conteinerDePerguntas" >
+            <span class="pergunta">Qual imagem é do SUJU?</span>
             <ul>
-                <li class="pergunta"><span>Qual imagem é do SUJU?</span>
+                <li class="opcaoDeImg">
+                    <img src="super-junior2.jpg">
+                    <span><strong>Suju</strong></span>
                 </li>
                 <li class="opcaoDeImg">
                     <img src="super-junior2.jpg">
-                    <span>Suju</span>
+                    <span><strong>Suju</strong></span>
                 </li>
                 <li class="opcaoDeImg">
                     <img src="super-junior2.jpg">
-                    <span>Suju</span>
+                    <span><strong>Suju</strong></span>
                 </li>
                 <li class="opcaoDeImg">
                     <img src="super-junior2.jpg">
-                    <span>Suju</span>
-                </li>
-                <li class="opcaoDeImg">
-                    <img src="super-junior2.jpg">
-                    <span>Suju</span>
+                    <span><strong>Suju</strong></span>
                 </li>
             </ul>
+        </div>
+
+        <div class="conteirerResposta">
+            <span class="porcentagemDeAcerto">100% de acerto: Voce sabe tudo sobre a SM!</span>
+            <ul>
+                <li>
+                    <img src="super-junior.jpg">
+
+                </li>
+                <li><strong>parabéns, meu deus, voce sabe tudo, bla bla bla bla lorim ipsum abemus latim</strong> 
+
+                </li>
+            </ul>
+
+
+
+
         </div>
       
     </div>
