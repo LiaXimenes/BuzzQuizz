@@ -111,11 +111,12 @@ function voltarHome() {
 
 function irParaQuizz(elemento){
     sumirTelaPrincipal();
+    chamandoQuizzEscolhido();
 
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.remove("escondido")
 
-    chamandoQuizzEscolhido();
+    
 }
 
 function chamandoQuizzEscolhido(){
@@ -160,7 +161,12 @@ function reiniciarQuizz(){
 }
 
 function voltarHome(){
+    alert("volteeeeeeeei");
+
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.add("escondido");
+
+    let todosQuizzes = document.querySelector(".todosQuizzes");
+    todosQuizzes.classList.remove("escondido");
 
 }
