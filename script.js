@@ -103,7 +103,7 @@ function crieSuasPerguntas() {
 }
 
 function colocarPerguntas(elemento,numeroDaPergunta) {
-    let abrirCaixa = elemento.parentNode.parentNode
+    let abrirCaixa = elemento.parentNode.parentNode;
     console.log(abrirCaixa);
     abrirCaixa.innerHTML = `
     <div class="perguntaCriada">
@@ -122,23 +122,53 @@ function colocarPerguntas(elemento,numeroDaPergunta) {
             <input type="text" value="" placeholder="URL da imagem 2">
             <input type="text" value="" placeholder="Resposta incorreta 3">
             <input type="text" value="" placeholder="URL da imagem 3">`
-    console.log (numeroDaPergunta);
 }
 
 function crieSeusNiveis() {
 
 
 
-    if(condicao){let paginaDePerguntas = document.querySelector(".criarPerguntas");
+    let paginaDePerguntas = document.querySelector(".criarPerguntas");
     paginaDePerguntas.classList.add("escondido");
 
     let paginaDeQuizz = document.querySelector(".quizzNiveis");
-    paginaDeQuizz.classList.remove("escondido");}
+    paginaDeQuizz.classList.remove("escondido");
 
-    else{
-        alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
-    }
+    let niveis = document.querySelector(".quizzNiveis");
+    let numeroDeNiveis = "";
+
+    for(let i = 0; i < qtdDeNiveisQuizzCriado; i++){
+        numeroDeNiveis +=`
+        <div class="caixaDeNiveis">
+        <div class="nivelCriado">
+                    <p>Nível ${i+1}</p>
+                    <ion-icon onclick="abrirNiveis(this,${i})" name="create-outline"></ion-icon>
+                </div></div>`
     
+    }
+    niveis.innerHTML = numeroDeNiveis+`<input onclick="quizzCriado()" type="button" value="Finalizar Quizz"> 
+    `;
+    
+    
+
+    //else{
+      //  alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
+    //}
+    
+}
+
+function abrirNiveis(elemento,numeroDoQuizz) {
+    let abrirCaixa = elemento.parentNode.parentNode;
+    console.log(abrirCaixa);
+    abrirCaixa.innerHTML = `
+                <div class="nivelCriado">
+                    <p>Nível ${numeroDoQuizz+1}</p>
+                    <ion-icon name="create-outline"></ion-icon>
+                </div>
+            <input type="text" value="" placeholder="Título do nível">
+            <input type="text" value="" placeholder="% de acerto mínimo">
+            <input type="text" value="" placeholder="URL da imagem do nível">
+            <input type="text" value="" placeholder="Descrição do nível">`
 }
 
 function quizzCriado() {
@@ -164,16 +194,13 @@ function voltarHome() {
 
 //fim de criar quizz
 
-//ir para quizz escolhido
-
 function irParaQuizz(elemento){
     sumirTelaPrincipal();
-    chamandoQuizzEscolhido();
 
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.remove("escondido")
 
-    
+    chamandoQuizzEscolhido();
 }
 
 function chamandoQuizzEscolhido(){
@@ -182,52 +209,35 @@ function chamandoQuizzEscolhido(){
 }
 
 function montandoQuizzEscolhido(conteudo){
-    console.log(conteudo.data.levels);
+    console.log(conteudo.data)
 
-    let addFotoFundo = document.querySelector(".fotoDeFundo")
-    addFotoFundo.innerHTML += `
-    <img src="${conteudo.data.image}">
-    <span>${conteudo.data.title}</span>` 
-
-    let addPerguntas = document.querySelector(".conteinerDePerguntas")
+    const adicionar = document.querySelector(".quizzEscolhido")
 
     for(let i = 0; i < conteudo.data.length; i++){
-        addPerguntas.innerHTML += `
-        <span class="pergunta">${conteudo.data.questions[1].title}</span>
-        <ul>
-            <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[1].answer[i].image}" onclick="">
-                <span><strong>${conteudo.data.questions[1].answer[i].text}</strong></span>
-            </li>
-            <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[1].answer[i].image}" onclick="">
-                <span><strong>${conteudo.data.questions[1].answer[i].text}</strong></span>
-            </li>
-            <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[1].answer[i].image}" onclick="">
-                <span><strong>${conteudo.data.questions[1].answer[i].text}</strong></span>
-            </li>
-            <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[1].answer[i].image}" onclick="">
-                <span><strong>${conteudo.data.questions[1].answer[i].text}</strong></span>
-            </li>
-        </ul>`
+        adicionar.innerHTML += `
+        <div class="conteinerDePerguntas" >
+            <span class="pergunta">${conteudo.data.questions[i].title}</span>
+            <ul>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
+                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
+                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
+                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
+                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
+                </li>
+            </ul>
+        </div>`
     }
 
-
-    let addResultado = document.querySelector(".conteirerResultado");
-    for(let i = 0; i < conteudo.data.length; i++){
-        addResultado.innerHTML +=`
-        <span class="porcentagemDeAcerto">${conteudo.data.levels.title}</span>
-        <ul>
-            <li>
-                <img src="${conteudo.data.levels.image[i]}">
-            </li>
-            <li><strong>${conteudo.data.levels[i].text[i]}</strong> 
-            </li>
-        </ul>`
-    }
-    
 }
 
 function reiniciarQuizz(){
@@ -237,11 +247,5 @@ function reiniciarQuizz(){
 function voltarHome(){
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.add("escondido");
-
-    let todosQuizzes = document.querySelector(".todosQuizzes");
-    todosQuizzes.classList.remove("escondido");
-
-    let criarQuizz = document.querySelector(".criarQuizz");
-    criarQuizz.classList.remove("escondido");
 
 }
