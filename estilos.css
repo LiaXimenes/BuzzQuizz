@@ -2,7 +2,6 @@ body {
   background-color: #fafafa;
 }
 
-
 /* topo da página */
 .containerTopo {
   background-color: #ec362d;
@@ -143,6 +142,10 @@ body {
   width: 100%;
   margin-top: 69px;
   background: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .fotoDeFundo {
@@ -165,28 +168,30 @@ body {
 
 .conteinerDePerguntas {
   padding: 35px 27px;
-  width: 800px;
+  width: 759px;
+  height: 676px;
+  margin-top: 42px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  background: red;
+  background: #ffffff;
 }
 
-.conteinerDePerguntas ul li{
+.conteinerDePerguntas ul li {
   display: flex;
   flex-direction: column;
   font-family: "Roboto", sans-serif;
+  font-size: 20px;
   width: 330px;
 }
-.conteinerDePerguntas ul{
+.conteinerDePerguntas ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 .pergunta {
-  width: 100%;
+  width: 688px;
   height: 138px;
   background: chartreuse;
   display: flex;
@@ -201,7 +206,71 @@ body {
 .opcaoDeImg img {
   width: 330px;
   height: 175px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.conteirerResposta {
+  width: 759px;
+  height: 430px;
+  margin-top: 42px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.conteirerResposta ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.conteirerResposta ul li {
+  display: flex;
+  flex-direction: column;
+  width: 330px;
+  margin-left: 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 23px;
+  color: #484848;
+}
+
+.porcentagemDeAcerto {
+  width: 727px;
+  height: 99px;
+  margin-top: 18px;
+  background: #ec362d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 23px;
+}
+
+.botaoReiniciar {
+  width: 260px;
+  height: 52px;
+  background: #ec362d;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  border: none;
+  font-size: 21px;
+}
+
+.botaoVoltarHome {
+  border: none;
+  background: inherit;
+  color: #818181;
+  font-family: "Roboto", sans-serif;
+  font-size: 21px;
 }
 
 /* tela de criar quizz */
@@ -229,7 +298,8 @@ body {
   flex-direction: column;
 }
 
-.caixaDeCriarPerguntas, .caixaDeNiveis{
+.caixaDeCriarPerguntas,
+.caixaDeNiveis {
   background-color: #ffffff;
   display: flex;
   justify-content: space-evenly;
@@ -238,7 +308,9 @@ body {
   margin-bottom: 24px;
 }
 
-.caixaDePerguntas input, .caixaDeCriarPerguntas input, .caixaDeNiveis input {
+.caixaDePerguntas input,
+.caixaDeCriarPerguntas input,
+.caixaDeNiveis input {
   width: 90%;
   height: 46px;
   border: 1px #bababa solid;
@@ -249,7 +321,12 @@ body {
   color: #bababa;
 }
 
-.caixaDePerguntas input:focus, .caixaDeNiveis input:focus, .quizzNiveis > input:focus, .caixaDeCriarPerguntas input:focus, .criarPerguntas > input:focus, .criandoUmQuizz > input {
+.caixaDePerguntas input:focus,
+.caixaDeNiveis input:focus,
+.quizzNiveis > input:focus,
+.caixaDeCriarPerguntas input:focus,
+.criarPerguntas > input:focus,
+.criandoUmQuizz > input {
   outline-style: none;
 }
 
@@ -266,7 +343,9 @@ body {
   font-size: 21px;
 }
 
-.perguntaCriada, .caixaDeCriarPerguntas > p, .nivelCriado{
+.perguntaCriada,
+.caixaDeCriarPerguntas > p,
+.nivelCriado {
   margin: auto;
   padding: 24px 0;
   width: 90%;
@@ -279,17 +358,20 @@ body {
   font-weight: bold;
 }
 
-.perguntaCriada ion-icon, .nivelCriado ion-icon{
+.perguntaCriada ion-icon,
+.nivelCriado ion-icon {
   font-size: 24px;
   --ionicon-stroke-width: 32px;
   color: #000;
 }
 
-.caixaDeCriarPerguntas input, .caixaDeNiveis input{
+.caixaDeCriarPerguntas input,
+.caixaDeNiveis input {
   margin-bottom: 14px;
 }
 
-.caixaDeCriarPerguntas input:nth-child(9), .caixaDeCriarPerguntas input:nth-child(11){
+.caixaDeCriarPerguntas input:nth-child(9),
+.caixaDeCriarPerguntas input:nth-child(11) {
   margin-bottom: 32px;
 }
 

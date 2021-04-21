@@ -79,5 +79,15 @@ function irParaQuizz(elemento){
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.remove("escondido")
 
-    console.log(elemento);
+    chamandoQuizzEscolhido();
+}
+
+function chamandoQuizzEscolhido(){
+    const retorno = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/1");
+    retorno.then(montandoQuizzEscolhido)
+}
+
+function montandoQuizzEscolhido(conteudo){
+    console.log(conteudo.data)
+
 }
