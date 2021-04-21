@@ -104,8 +104,21 @@
                     <ion-icon name="create-outline"></ion-icon>
                 </div>
             </div>
-            <input onclick="quizzCriado()" type="button" value="Prosseguir para criar níveis">
+               <input onclick="quizzCriado()" type="button" value="Finalizar Quizz">
+    
+    </div>
 
+    <div class="quizzPronto escondido">
+        <span>Seu quizz está pronto</span>
+        <div class="imagemQuizzPronto">
+           <img src="super-junior.jpg" alt=""> 
+        </div>
+        <p>Título do quizz</p>
+        <div class="botoesQuizzPronto">
+            <input onclick="irParaQuizz(this)" type="button" value="Acessar Quizz">
+            <p onclick="voltarHome()">Voltar para home</p>  
+        </div>
+        
     </div>
     
     <!--Seus quizzes (só pra deixar no esquema kkkkkkkk)-->
