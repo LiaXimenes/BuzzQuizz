@@ -142,6 +142,10 @@ body {
   width: 100%;
   margin-top: 69px;
   background: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .fotoDeFundo {
@@ -248,24 +252,39 @@ body {
   font-size: 23px;
 }
 
+.botaoReiniciar {
+  width: 260px;
+  height: 52px;
+  background: #ec362d;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  border: none;
+  font-size: 21px;
+}
+
+.botaoVoltarHome {
+  border: none;
+  background: inherit;
+  color: #818181;
+  font-family: "Roboto", sans-serif;
+  font-size: 21px;
+}
+
 /* tela de criar quizz */
-<<<<<<< HEAD
 .criandoUmQuizz,
-.criarPerguntas {
-=======
-.criandoUmQuizz, .criarPerguntas, .quizzNiveis{
->>>>>>> 31bd245bd39127ca9c28fc99e02846ed094f7f0f
+.criarPerguntas,
+.quizzNiveis {
   margin: 140px auto;
   width: 45%;
   text-align: center;
 }
 
-<<<<<<< HEAD
 .criandoUmQuizz p,
-.criarPerguntas > p {
-=======
-.criandoUmQuizz p, .criarPerguntas>p, .quizzNiveis>p{
->>>>>>> 31bd245bd39127ca9c28fc99e02846ed094f7f0f
+.criarPerguntas > p,
+.quizzNiveis > p {
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 23px;
@@ -283,11 +302,8 @@ body {
   flex-direction: column;
 }
 
-<<<<<<< HEAD
-.caixaDeCriarPerguntas {
-=======
-.caixaDeCriarPerguntas, .caixaDeNiveis{
->>>>>>> 31bd245bd39127ca9c28fc99e02846ed094f7f0f
+.caixaDeCriarPerguntas,
+.caixaDeNiveis {
   background-color: #ffffff;
   display: flex;
   justify-content: space-evenly;
@@ -296,12 +312,9 @@ body {
   margin-bottom: 24px;
 }
 
-<<<<<<< HEAD
 .caixaDePerguntas input,
-.caixaDeCriarPerguntas input {
-=======
-.caixaDePerguntas input, .caixaDeCriarPerguntas input, .caixaDeNiveis input {
->>>>>>> 31bd245bd39127ca9c28fc99e02846ed094f7f0f
+.caixaDeCriarPerguntas input,
+.caixaDeNiveis input {
   width: 90%;
   height: 46px;
   border: 1px #bababa solid;
@@ -312,8 +325,9 @@ body {
   color: #bababa;
 }
 
-<<<<<<< HEAD
 .caixaDePerguntas input:focus,
+.caixaDeNiveis input:focus,
+.quizzNiveis > input:focus,
 .caixaDeCriarPerguntas input:focus,
 .criarPerguntas > input:focus,
 .criandoUmQuizz > input {
@@ -321,14 +335,8 @@ body {
 }
 
 .criandoUmQuizz > input,
-.criarPerguntas > input {
-=======
-.caixaDePerguntas input:focus, .caixaDeNiveis input:focus, .quizzNiveis > input:focus, .caixaDeCriarPerguntas input:focus, .criarPerguntas > input:focus, .criandoUmQuizz > input {
-  outline-style: none;
-}
-
-.criandoUmQuizz > input, .criarPerguntas > input, .quizzNiveis > input {
->>>>>>> 31bd245bd39127ca9c28fc99e02846ed094f7f0f
+.criarPerguntas > input,
+.quizzNiveis > input {
   margin-top: 85px;
   width: 368, 86px;
   height: 54px;
@@ -341,12 +349,9 @@ body {
   font-size: 21px;
 }
 
-<<<<<<< HEAD
 .perguntaCriada,
-.caixaDeCriarPerguntas > p {
-=======
-.perguntaCriada, .caixaDeCriarPerguntas > p, .nivelCriado{
->>>>>>> 31bd245bd39127ca9c28fc99e02846ed094f7f0f
+.caixaDeCriarPerguntas > p,
+.nivelCriado {
   margin: auto;
   padding: 24px 0;
   width: 90%;
@@ -359,21 +364,15 @@ body {
   font-weight: bold;
 }
 
-<<<<<<< HEAD
-.perguntaCriada ion-icon {
-=======
-.perguntaCriada ion-icon, .nivelCriado ion-icon{
->>>>>>> 31bd245bd39127ca9c28fc99e02846ed094f7f0f
+.perguntaCriada ion-icon,
+.nivelCriado ion-icon {
   font-size: 24px;
   --ionicon-stroke-width: 32px;
   color: #000;
 }
 
-<<<<<<< HEAD
-.caixaDeCriarPerguntas input {
-=======
-.caixaDeCriarPerguntas input, .caixaDeNiveis input{
->>>>>>> 31bd245bd39127ca9c28fc99e02846ed094f7f0f
+.caixaDeCriarPerguntas input,
+.caixaDeNiveis input {
   margin-bottom: 14px;
 }
 
