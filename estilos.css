@@ -143,28 +143,41 @@ body {
   width: 100%;
   margin-top: 69px;
   background: #e5e5e5;
-  background-image: url("foto-fundo.jpg");
-  background-repeat: no-repeat;
 }
 
-.quizzEscolhido span {
+.fotoDeFundo {
+  width: 100%;
+  height: 227px;
+  margin-top: 69px;
+  background-image: url("foto-fundo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fotoDeFundo span {
   font-family: "Roboto", sans-serif;
   color: #ffffff;
   font-size: 39px;
-  top: 170px; /*colocar de alguma forma no centro sem ser por px*/
-  left: 40px;
 }
 
 .conteinerDePerguntas {
-  width: 688px;
+  width: 800px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  background: red;
 }
 .pergunta {
   width: 688px;
   height: 138px;
   background: chartreuse;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .pergunta span {
@@ -173,9 +186,17 @@ body {
   font-size: 23px;
 }
 
+.opcaoDeImg {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Roboto", sans-serif;
+}
+
 .opcaoDeImg img {
   width: 330px;
   height: 175px;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 /* tela de criar quizz */
