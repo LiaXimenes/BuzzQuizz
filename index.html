@@ -74,8 +74,36 @@
                 <ion-icon name="create-outline"></ion-icon>
             </div>
         </div>
-           <input onclick="crieSuasPerguntas()" type="button" value="Prosseguir para criar níveis">
-           
+           <input onclick="crieSeusNiveis()" type="button" value="Prosseguir para criar níveis">
+    </div>
+
+    <div class="quizzNiveis escondido">
+        <p>Agora, decida os níveis</p>
+        <div class="caixaDeNiveis">
+            <div class="nivelCriado">
+                <p>Nível 1</p>
+                <ion-icon name="create-outline"></ion-icon>
+            </div>
+            <input type="text" value="Título do nível">
+            <input type="text" value="% de acerto mínimo">
+            <input type="text" value="URL da imagem do nível">
+            <input type="text" value="Descrição do nível">
+        </div> 
+            <div class="caixaDeNiveis">
+            
+                <div class="nivelCriado">
+                    <p>Nível 2</p>
+                    <ion-icon name="create-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="caixaDeNiveis">
+                <div class="nivelCriado">
+                    <p>Nível 3</p>
+                    <ion-icon name="create-outline"></ion-icon>
+                </div>
+            </div>
+               <input onclick="quizzCriado()" type="button" value="Prosseguir para criar níveis">
+    
     </div>
     
     <!--Seus quizzes (só pra deixar no esquema kkkkkkkk)-->
@@ -157,6 +185,7 @@
                 </li>
             </ul>
         </div>
+<<<<<<< HEAD
 
         <div class="conteirerResposta">
             <span class="porcentagemDeAcerto">100% de acerto: Voce sabe tudo sobre a SM!</span>
@@ -175,7 +204,11 @@
 
         </div>
       
+=======
+>>>>>>> 31bd245bd39127ca9c28fc99e02846ed094f7f0f
     </div>
+
+ 
 
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

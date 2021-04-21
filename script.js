@@ -43,6 +43,15 @@ function crieSuasPerguntas() {
     paginaDePerguntas.classList.remove("escondido");
 }
 
+function crieSeusNiveis() {
+    let paginaDePerguntas = document.querySelector(".criarPerguntas");
+    paginaDePerguntas.classList.add("escondido");
+
+    let paginaDeQuizz = document.querySelector(".quizzNiveis");
+    paginaDeQuizz.classList.remove("escondido");
+    
+}
+
 function irParaQuizz(elemento){
     sumirTelaPrincipal();
 
