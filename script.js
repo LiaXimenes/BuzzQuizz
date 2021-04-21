@@ -69,4 +69,41 @@ function chamandoQuizzEscolhido(){
 function montandoQuizzEscolhido(conteudo){
     console.log(conteudo.data)
 
+    const adicionar = document.querySelector(".quizzEscolhido")
+
+    for(let i = 0; i < conteudo.data.length; i++){
+        adicionar.innerHTML += `
+        <div class="conteinerDePerguntas" >
+            <span class="pergunta">${conteudo.data.questions[i].title}</span>
+            <ul>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
+                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
+                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
+                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
+                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
+                </li>
+            </ul>
+        </div>`
+    }
+
+}
+
+function reiniciarQuizz(){
+
+}
+
+function voltarHome(){
+    let telaDoQuizz = document.querySelector(".quizzEscolhido");
+    telaDoQuizz.classList.add("escondido");
+
 }
