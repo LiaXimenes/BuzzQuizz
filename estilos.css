@@ -134,10 +134,6 @@ body {
 
 /* Quizz Escolhido*/
 
-.escondido {
-  display: none;
-}
-
 .quizzEscolhido {
   width: 100%;
   margin-top: 69px;
@@ -148,22 +144,29 @@ body {
   align-items: center;
 }
 
+.escondido {
+  display: none;
+}
+
 .fotoDeFundo {
   width: 100%;
   height: 227px;
-  margin-top: 69px;
-  background-image: url("foto-fundo.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.fotoDeFundo img {
+  width: 100%;
+  height: 227px;
+  position: relative;
 }
 
 .fotoDeFundo span {
   font-family: "Roboto", sans-serif;
   color: #ffffff;
   font-size: 39px;
+  position: absolute;
 }
 
 .conteinerDePerguntas {
@@ -211,7 +214,7 @@ body {
   margin-bottom: 10px;
 }
 
-.conteirerResposta {
+.conteirerResultado {
   width: 759px;
   height: 430px;
   margin-top: 42px;
@@ -222,14 +225,14 @@ body {
   justify-content: space-around;
 }
 
-.conteirerResposta ul {
+.conteirerResultado ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.conteirerResposta ul li {
+.conteirerResultado ul li {
   display: flex;
   flex-direction: column;
   width: 330px;
@@ -275,13 +278,19 @@ body {
 }
 
 /* tela de criar quizz */
-.criandoUmQuizz, .criarPerguntas, .quizzNiveis, .quizzPronto{
+.criandoUmQuizz,
+.criarPerguntas,
+.quizzNiveis,
+.quizzPronto {
   margin: 140px auto;
   width: 45%;
   text-align: center;
 }
 
-.criandoUmQuizz p, .criarPerguntas>p, .quizzNiveis>p, .quizzPronto span{
+.criandoUmQuizz p,
+.criarPerguntas > p,
+.quizzNiveis > p,
+.quizzPronto span {
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 23px;
@@ -331,7 +340,9 @@ body {
   outline-style: none;
 }
 
-.criandoUmQuizz > input, .criarPerguntas > input, .quizzNiveis > input{
+.criandoUmQuizz > input,
+.criarPerguntas > input,
+.quizzNiveis > input {
   margin-top: 85px;
   width: 368, 86px;
   height: 54px;
@@ -376,13 +387,13 @@ body {
   margin-bottom: 32px;
 }
 
-.quizzPronto img{
+.quizzPronto img {
   margin: 46px 0;
   width: 500px;
   border-radius: 5px;
 }
 
-.quizzPronto > p{
+.quizzPronto > p {
   font-family: "Roboto", sans-serif;
   font-size: 23px;
   color: #fff;
@@ -393,12 +404,11 @@ body {
   left: 18px;
 }
 
-.imagemQuizzPronto{
+.imagemQuizzPronto {
   position: relative;
-
 }
 
-.botoesQuizzPronto input{
+.botoesQuizzPronto input {
   width: 368, 86px;
   height: 54px;
   background-color: #ec362d;
@@ -410,7 +420,7 @@ body {
   font-size: 21px;
 }
 
-.botoesQuizzPronto p{
+.botoesQuizzPronto p {
   margin-top: 9px;
   font-family: "Roboto", sans-serif;
   font-size: 21px;

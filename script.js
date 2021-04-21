@@ -109,6 +109,8 @@ function voltarHome() {
 
 //fim de criar quizz
 
+//ir para quizz escolhido
+
 function irParaQuizz(elemento){
     sumirTelaPrincipal();
     chamandoQuizzEscolhido();
@@ -125,35 +127,52 @@ function chamandoQuizzEscolhido(){
 }
 
 function montandoQuizzEscolhido(conteudo){
-    console.log(conteudo.data)
+    console.log(conteudo.data.levels);
 
-    const adicionar = document.querySelector(".quizzEscolhido")
+    let addFotoFundo = document.querySelector(".fotoDeFundo")
+    addFotoFundo.innerHTML += `
+    <img src="${conteudo.data.image}">
+    <span>${conteudo.data.title}</span>` 
+
+    let addPerguntas = document.querySelector(".conteinerDePerguntas")
 
     for(let i = 0; i < conteudo.data.length; i++){
-        adicionar.innerHTML += `
-        <div class="conteinerDePerguntas" >
-            <span class="pergunta">${conteudo.data.questions[i].title}</span>
-            <ul>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
-                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
-                </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
-                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
-                </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
-                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
-                </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
-                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
-                </li>
-            </ul>
-        </div>`
+        addPerguntas.innerHTML += `
+        <span class="pergunta">${conteudo.data.questions[1].title}</span>
+        <ul>
+            <li class="opcaoDeImg">
+                <img src="${conteudo.data.questions[1].answer[i].image}" onclick="">
+                <span><strong>${conteudo.data.questions[1].answer[i].text}</strong></span>
+            </li>
+            <li class="opcaoDeImg">
+                <img src="${conteudo.data.questions[1].answer[i].image}" onclick="">
+                <span><strong>${conteudo.data.questions[1].answer[i].text}</strong></span>
+            </li>
+            <li class="opcaoDeImg">
+                <img src="${conteudo.data.questions[1].answer[i].image}" onclick="">
+                <span><strong>${conteudo.data.questions[1].answer[i].text}</strong></span>
+            </li>
+            <li class="opcaoDeImg">
+                <img src="${conteudo.data.questions[1].answer[i].image}" onclick="">
+                <span><strong>${conteudo.data.questions[1].answer[i].text}</strong></span>
+            </li>
+        </ul>`
     }
 
+
+    let addResultado = document.querySelector(".conteirerResultado");
+    for(let i = 0; i < conteudo.data.length; i++){
+        addResultado.innerHTML +=`
+        <span class="porcentagemDeAcerto">${conteudo.data.levels.title}</span>
+        <ul>
+            <li>
+                <img src="${conteudo.data.levels.image[i]}">
+            </li>
+            <li><strong>${conteudo.data.levels[i].text[i]}</strong> 
+            </li>
+        </ul>`
+    }
+    
 }
 
 function reiniciarQuizz(){
@@ -161,12 +180,13 @@ function reiniciarQuizz(){
 }
 
 function voltarHome(){
-    alert("volteeeeeeeei");
-
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.add("escondido");
 
     let todosQuizzes = document.querySelector(".todosQuizzes");
     todosQuizzes.classList.remove("escondido");
+
+    let criarQuizz = document.querySelector(".criarQuizz");
+    criarQuizz.classList.remove("escondido");
 
 }
