@@ -205,13 +205,13 @@ body {
 }
 
 /* tela de criar quizz */
-.criandoUmQuizz, .criarPerguntas{
+.criandoUmQuizz, .criarPerguntas, .quizzNiveis{
   margin: 140px auto;
   width: 45%;
   text-align: center;
 }
 
-.criandoUmQuizz p, .criarPerguntas>p {
+.criandoUmQuizz p, .criarPerguntas>p, .quizzNiveis>p{
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 23px;
@@ -229,7 +229,7 @@ body {
   flex-direction: column;
 }
 
-.caixaDeCriarPerguntas{
+.caixaDeCriarPerguntas, .caixaDeNiveis{
   background-color: #ffffff;
   display: flex;
   justify-content: space-evenly;
@@ -238,7 +238,7 @@ body {
   margin-bottom: 24px;
 }
 
-.caixaDePerguntas input, .caixaDeCriarPerguntas input {
+.caixaDePerguntas input, .caixaDeCriarPerguntas input, .caixaDeNiveis input {
   width: 90%;
   height: 46px;
   border: 1px #bababa solid;
@@ -249,11 +249,11 @@ body {
   color: #bababa;
 }
 
-.caixaDePerguntas input:focus, .caixaDeCriarPerguntas input:focus, .criarPerguntas > input:focus, .criandoUmQuizz > input {
+.caixaDePerguntas input:focus, .caixaDeNiveis input:focus, .quizzNiveis > input:focus, .caixaDeCriarPerguntas input:focus, .criarPerguntas > input:focus, .criandoUmQuizz > input {
   outline-style: none;
 }
 
-.criandoUmQuizz > input, .criarPerguntas > input {
+.criandoUmQuizz > input, .criarPerguntas > input, .quizzNiveis > input {
   margin-top: 85px;
   width: 368, 86px;
   height: 54px;
@@ -266,7 +266,7 @@ body {
   font-size: 21px;
 }
 
-.perguntaCriada, .caixaDeCriarPerguntas > p{
+.perguntaCriada, .caixaDeCriarPerguntas > p, .nivelCriado{
   margin: auto;
   padding: 24px 0;
   width: 90%;
@@ -279,13 +279,13 @@ body {
   font-weight: bold;
 }
 
-.perguntaCriada ion-icon{
+.perguntaCriada ion-icon, .nivelCriado ion-icon{
   font-size: 24px;
   --ionicon-stroke-width: 32px;
   color: #000;
 }
 
-.caixaDeCriarPerguntas input{
+.caixaDeCriarPerguntas input, .caixaDeNiveis input{
   margin-bottom: 14px;
 }
 
