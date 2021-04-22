@@ -267,13 +267,14 @@ function voltarHome() {
 
 //fim de criar quizz
 
+//ir para quizz escolhido
+
 function irParaQuizz(elemento){
     sumirTelaPrincipal();
+    chamandoQuizzEscolhido();
 
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.remove("escondido")
-
-    chamandoQuizzEscolhido();
 }
 
 function chamandoQuizzEscolhido(){
@@ -282,35 +283,53 @@ function chamandoQuizzEscolhido(){
 }
 
 function montandoQuizzEscolhido(conteudo){
-    console.log(conteudo.data)
+    console.log(conteudo.data.questions[0].answers);
 
-    const adicionar = document.querySelector(".quizzEscolhido")
+    let addFotoFundo = document.querySelector(".fotoDeFundo")
+    addFotoFundo.innerHTML += `
+    <img src="${conteudo.data.image}">
+    <span>${conteudo.data.title}</span>` 
+
+    let addPerguntas = document.querySelector(".conteinerDePerguntas")
 
     for(let i = 0; i < conteudo.data.length; i++){
-        adicionar.innerHTML += `
-        <div class="conteinerDePerguntas" >
-            <span class="pergunta">${conteudo.data.questions[i].title}</span>
-            <ul>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
-                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
-                </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
-                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
-                </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
-                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
-                </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answer[i].image}" onclick="">
-                    <span><strong>${conteudo.data.questions[i].answer[i].text}</strong></span>
-                </li>
-            </ul>
-        </div>`
+        addPerguntas.innerHTML += `
+        <span class="pergunta">${conteudo.data.questions[0].title}</span>
+        <ul>
+            <li class="opcaoDeImg">
+                <img src="${conteudo.data.questions[0].answers[0].image}" onclick="escolhida()">
+                <span><strong>${conteudo.data.questions[0].answers[0].text}</strong></span>
+            </li>
+            <li class="opcaoDeImg">
+                <img src="${conteudo.data.questions[0].answers[1].image}" onclick="escolhida()">
+                <span><strong>${conteudo.data.questions[0].answers[1].text}</strong></span>
+            </li>
+            <li class="opcaoDeImg">
+                <img src="${conteudo.data.questions[0].answers[2].image}" onclick="escolhida()">
+                <span><strong>${conteudo.data.questions[0].answers[2].text}</strong></span>
+            </li>
+            <li class="opcaoDeImg">
+                <img src="${conteudo.data.questions[0].answers[3].image}" onclick="escolhida()">
+                <span><strong>${conteudo.data.questions[0].answers[3].text}</strong></span>
+            </li>
+        </ul>`
     }
 
+//colocar a porcentagem de acerto e achar indice representante//
+
+    let addResultado = document.querySelector(".conteirerResultado");
+
+    addResultado.innerHTML +=`
+    <span class="porcentagemDeAcerto">${conteudo.data.levels[1].title}</span>
+    <ul>
+        <li>
+            <img src="${conteudo.data.levels[1].image}">
+        </li>
+        <li><strong>${conteudo.data.levels[1].text}</strong> 
+        </li>
+    </ul>`
+
+    
 }
 
 function reiniciarQuizz(){
@@ -321,4 +340,9 @@ function voltarHome(){
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.add("escondido");
 
+    let todosQuizzes = document.querySelector(".todosQuizzes");
+    todosQuizzes.classList.remove("escondido");
+
+    let criarQuizz = document.querySelector(".criarQuizz");
+    criarQuizz.classList.remove("escondido");
 }
