@@ -290,30 +290,33 @@ function montandoQuizzEscolhido(conteudo){
     <img src="${conteudo.data.image}">
     <span>${conteudo.data.title}</span>` 
 
-    let addPerguntas = document.querySelector(".conteinerDePerguntas")
+    let addPerguntas = document.querySelector(".conteiner")
 
-    for(let i = 0; i < conteudo.data.length; i++){
+   // for(let i = 0; i < conteudo.data.questions[0].answers.length; i++){//
         addPerguntas.innerHTML += `
+        <div class="conteinerDePerguntas" >
         <span class="pergunta">${conteudo.data.questions[0].title}</span>
         <ul>
             <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[0].answers[0].image}" onclick="escolhida()">
+                <img src="${conteudo.data.questions[0].answers[0].image}" onclick="escolhida(this)">
                 <span><strong>${conteudo.data.questions[0].answers[0].text}</strong></span>
             </li>
             <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[0].answers[1].image}" onclick="escolhida()">
+                <img src="${conteudo.data.questions[0].answers[1].image}" onclick="escolhida(this)">
                 <span><strong>${conteudo.data.questions[0].answers[1].text}</strong></span>
             </li>
             <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[0].answers[2].image}" onclick="escolhida()">
+                <img src="${conteudo.data.questions[0].answers[2].image}" onclick="escolhida(this)">
                 <span><strong>${conteudo.data.questions[0].answers[2].text}</strong></span>
             </li>
             <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[0].answers[3].image}" onclick="escolhida()">
+                <img src="${conteudo.data.questions[0].answers[3].image}" onclick="escolhida(this)">
                 <span><strong>${conteudo.data.questions[0].answers[3].text}</strong></span>
             </li>
-        </ul>`
-    }
+        </ul>
+        </div>`
+        
+    //}//
 
 //colocar a porcentagem de acerto e achar indice representante//
 
@@ -328,8 +331,6 @@ function montandoQuizzEscolhido(conteudo){
         <li><strong>${conteudo.data.levels[1].text}</strong> 
         </li>
     </ul>`
-
-    
 }
 
 function reiniciarQuizz(){
@@ -345,4 +346,9 @@ function voltarHome(){
 
     let criarQuizz = document.querySelector(".criarQuizz");
     criarQuizz.classList.remove("escondido");
+}
+
+function escolhida(imagem){
+    imagem.classList.toggle("opacidade")
+   
 }

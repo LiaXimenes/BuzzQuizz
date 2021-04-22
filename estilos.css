@@ -157,6 +157,7 @@ body {
 }
 
 .fotoDeFundo img {
+  /*colocar gradiente de coloração na foto para ler o que está escrito*/
   width: 100%;
   height: 227px;
   position: relative;
@@ -254,6 +255,10 @@ body {
   font-family: "Roboto", sans-serif;
   color: #ffffff;
   font-size: 23px;
+}
+
+.opacidade {
+  opacity: 30%;
 }
 
 .botaoReiniciar {
