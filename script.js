@@ -278,7 +278,7 @@ function voltarHome() {
     console.log(finalizarQuizz);
     finalizarQuizz.classList.add("escondido"); 
 
-    let adicionarQuizzEscondido = document.querySelector(".criarQuizz");
+    let adicionarQuizzEscondido = document.querySelector(".quizzesAdicionados");
     adicionarQuizzEscondido.classList.remove("escondido");
 
     let quizzEscondido = document.querySelector(".todosQuizzes");
