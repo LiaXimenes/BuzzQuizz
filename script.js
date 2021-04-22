@@ -209,7 +209,7 @@ function abrirNiveis(elemento,numeroDoQuizz) {
             <input type="text" value="" placeholder="Título do nível">
             <input type="text" value="" placeholder="% de acerto mínimo">
             <input type="text" value="" placeholder="URL da imagem do nível">
-            <input type="text" value="" placeholder="Descrição do nível">`
+            <input class="caixaDeNiveisDescricao" type="text" value="" placeholder="Descrição do nível">`
 }
 
 // quizz criado
@@ -263,8 +263,8 @@ function quizzCriado() {
             
             let informacoesDoQuizz = document.querySelector(".imagemQuizzPronto")
             informacoesDoQuizz.innerHTML = `
-                <div><img src="${urlimagemQuizzCriado}" alt=""> </div>
-                <p>${tituloDoQuizzCriado}</p>
+                <div><img src="${urlimagemQuizzCriado}" alt=""> 
+                <p>${tituloDoQuizzCriado}</p></div>
             `
             return "concluiu quizz";
         }
@@ -278,11 +278,10 @@ function irParaQuizzCriado() {
     //vou fazer hoje
 }
 
-function voltarHome() {
+function voltarParaHome() {
     let finalizarQuizz = document.querySelector(".quizzPronto");
-    console.log(finalizarQuizz);
     finalizarQuizz.classList.add("escondido"); 
-
+    
     let adicionarQuizzEscondido = document.querySelector(".quizzesAdicionados");
     adicionarQuizzEscondido.classList.remove("escondido");
 
