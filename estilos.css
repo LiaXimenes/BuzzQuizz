@@ -121,7 +121,7 @@ body {
   -webkit-mask-image: linear-gradient(to top, transparent 10%, black 65%);
 }
 
-.descricaoDoQuizz {
+.descricaoDoQuizz, .imagemQuizzPronto p {
   width: 300px;
   position: absolute;
   z-index: 2;
@@ -400,16 +400,7 @@ body {
   -webkit-mask-image: linear-gradient(to top, transparent 10%, black 65%);
 }
 
-.imagemQuizzPronto p {
-  font-family: "Roboto", sans-serif;
-  font-size: 23px;
-  color: #fff;
-  width: 300px;
-  position: absolute;
-  z-index: 2;
-  bottom: 54px;
-  left: 18px;
-}
+
 .imagemQuizzPronto div {
   width: 500px;
   height: 266px;
@@ -419,6 +410,11 @@ body {
 
 .imagemQuizzPronto {
   margin: 46px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.imagemQuizzPronto div{
   position: relative;
 }
 
@@ -446,7 +442,7 @@ body {
 
 @media (max-width: 1100px) {
   .containerTopo{
-    width: 100%;
+    width: 100vw;
   }
 
   .todosQuizzes {
@@ -455,6 +451,17 @@ body {
 
   .triosDeQuizzes{
     justify-content: center;
+    flex-direction: column;
+  }  
+
+  .quizz, .imagemQuizzPronto{
+    width: 100%;
+    height: 34%;
+  }
+
+  .quizz img, .imagemQuizzPronto div img{
+    width: 100%;
+    height: 34vw;
   }
 
   .criarQuizz {
@@ -495,7 +502,14 @@ body {
     font-size: 18px;
   }
 
-  .nivelCriado input:last-child{
-    height: 177px;
+  .caixaDeNiveisDescricao{
+    height: 177px!important;
+    vertical-align: top;
+  }
+
+  .botoesQuizzPronto p {
+    font-size: 18px;
   }
 }
+
+
