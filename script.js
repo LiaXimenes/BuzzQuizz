@@ -86,7 +86,7 @@ function crieSuasPerguntas() {
         for(let i = 0; i < qtdDeperguntasDoSeuQuizz; i++){
             numeroDePerguntas +=`
             
-            <div class="caixaDeCriarPerguntas">
+            <div class="caixaDeCriarPerguntas pergunta${i}">
                 <div class="perguntaCriada">
                     <p>Pergunta ${i+1}</p>
                     <ion-icon onclick="colocarPerguntas(this,${i})" name="create-outline"></ion-icon>
@@ -106,7 +106,7 @@ function colocarPerguntas(elemento,numeroDaPergunta) {
     let abrirCaixa = elemento.parentNode.parentNode;
     console.log(abrirCaixa);
     abrirCaixa.innerHTML = `
-    <div class="perguntaCriada">
+            <div class="perguntaCriada">
                 <p>Pergunta ${numeroDaPergunta+1}</p>
                 <ion-icon name="create-outline"></ion-icon>
             </div>
@@ -126,7 +126,38 @@ function colocarPerguntas(elemento,numeroDaPergunta) {
 
 function crieSeusNiveis() {
 
+    let arrayPerguntas = [];
+    for(let i = 0; i <qtdDePerguntasQuizzCriado; i++){
+        let listaDePerguntas = document.querySelector(`.pergunta${i}`).children;
 
+        let textoDaPergunta = listaDePerguntas[1].value;
+        let corDeFundo = listaDePerguntas[2].value;
+        let respostaCorreta = listaDePerguntas[4].value;
+        let urlDaImagemCorreta = listaDePerguntas[5].value;
+        let respostaIncorreta1 = listaDePerguntas[7].value;
+        let urlRespostaIncorreta1 = listaDePerguntas[8].value;
+        let respostaIncorreta2 = listaDePerguntas[9].value;
+        let urlRespostaIncorreta2 = listaDePerguntas[10].value;
+        let respostaIncorreta3 = listaDePerguntas[11].value;
+        let urlRespostaIncorreta3 = listaDePerguntas[12].value;
+
+        let textoDaPerguntaCerto = textoDaPergunta.length >= 20;
+        let corDeFundoCerta = corDeFundo[0] =="#" && corDeFundo.length == 7;
+        let corDeFundoHexa1 = typeof(corDeFundo[1]) == "string" ||typeof(corDeFundo[1]) == "number";
+        let corDeFundoHexa2 = typeof(corDeFundo[2]) == "string" ||typeof(corDeFundo[2]) == "number";
+        let corDeFundoHexa3 = typeof(corDeFundo[3]) == "string" ||typeof(corDeFundo[3]) == "number";
+        let corDeFundoHexa4 = typeof(corDeFundo[4]) == "string" ||typeof(corDeFundo[4]) == "number";
+        let corDeFundoHexa5 = typeof(corDeFundo[5]) == "string" ||typeof(corDeFundo[5]) == "number";
+        let corDeFundoHexa6 = typeof(corDeFundo[6]) == "string" ||typeof(corDeFundo[6]) == "number";
+        let urlCorreta = checkImgOnline(urlDaImagemCorreta) && checkImgOnline(urlRespostaIncorreta1) && checkImgOnline(urlRespostaIncorreta2) && checkImgOnline(urlRespostaIncorreta3);
+
+        if(textoDaPerguntaCerto && corDeFundoCerta && corDeFundoHexa1 && corDeFundoHexa2 && corDeFundoHexa3 && corDeFundoHexa4 && corDeFundoHexa5 && corDeFundoHexa6 && urlCorreta){
+            arrayPerguntas.push({title: textoDaPergunta, color: corDeFundo,answers:[{text: respostaCorreta, image: urlDaImagemCorreta, isCorrectAnswer: true},{text: respostaIncorreta1, image: urlRespostaIncorreta1, isCorrectAnswer: false},{text: respostaIncorreta2, image: urlRespostaIncorreta2, isCorrectAnswer: false},{text: respostaIncorreta3, image: urlRespostaIncorreta3, isCorrectAnswer: false}]})
+        }
+
+    }
+ 
+    
 
     let paginaDePerguntas = document.querySelector(".criarPerguntas");
     paginaDePerguntas.classList.add("escondido");
@@ -196,6 +227,7 @@ function quizzCriado() {
         }
         else{
             alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
+            return "errado :(";
         }
     }
 
@@ -212,7 +244,7 @@ function quizzCriado() {
                 <div><img src="${urlimagemQuizzCriado}" alt=""> </div>
                 <p>${tituloDoQuizzCriado}</p>
             `
-            return "concluiu quizz"
+            return "concluiu quizz";
         }
         
     }  
