@@ -64,7 +64,7 @@ function crieSuasPerguntas() {
     let tituloDoQuizz = listaDeRespostas[0].value;
     let urlDaImagemDoSeuQuizz = listaDeRespostas[1].value;
     let qtdDeperguntasDoSeuQuizz = listaDeRespostas[2].value;
-    let qtdDeNiveisDoQuizz = listaDeRespostas[3].value
+    let qtdDeNiveisDoQuizz = listaDeRespostas[3].value;
 
     //condição para passar para a próxima página
     let tituloCerto = tituloDoQuizz.length < 65 && tituloDoQuizz.length > 20;
@@ -101,7 +101,12 @@ function crieSuasPerguntas() {
         
         }
         perguntas.innerHTML = `<p>Crie suas perguntas</p>` + numeroDePerguntas +`<input onclick="crieSeusNiveis()" type="button" value="Prosseguir para criar níveis">`
-        }
+        
+        listaDeRespostas[0].value = "";
+        listaDeRespostas[1].value = "";
+        listaDeRespostas[2].value = "";
+        listaDeRespostas[3].value = "";
+    }
 
     else{
         alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
@@ -289,6 +294,17 @@ function voltarParaHome() {
     quizzEscondido.classList.remove("escondido");
 
     carregarPaginaPrincipal();
+}
+
+function criarQuizzDeNovo() {
+    let adicionarQuizzEscondido = document.querySelector(".quizzesAdicionados");
+    adicionarQuizzEscondido.classList.add("escondido");
+
+    let quizzEscondido = document.querySelector(".todosQuizzes");
+    quizzEscondido.classList.add("escondido");
+
+    let paginaDaCriacao = document.querySelector(".criandoUmQuizz");
+    paginaDaCriacao.classList.remove("escondido");
 }
 
 //fim de criar quizz

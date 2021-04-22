@@ -504,7 +504,7 @@ body {
 
   .caixaDeNiveisDescricao{
     height: 177px!important;
-    vertical-align: top;
+    vertical-align: text-top;
   }
 
   .botoesQuizzPronto p {
