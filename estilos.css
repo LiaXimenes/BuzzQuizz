@@ -434,6 +434,7 @@ body {
 }
 
 .botoesQuizzPronto p {
+  padding: 11px 20px;
   margin-top: 9px;
   font-family: "Roboto", sans-serif;
   font-size: 21px;
@@ -461,17 +462,25 @@ body {
     margin-top: 107px;
   }
 
-  .criandoUmQuizz {
+  .criandoUmQuizz,
+  .criarPerguntas,
+  .quizzNiveis,
+  .quizzPronto {
     margin: 106px auto;
     width: 100%;
   }
 
-  .criandoUmQuizz p {
+  .criandoUmQuizz p,
+  .criarPerguntas > p,
+  .quizzNiveis > p,
+  .quizzPronto span {
     font-size: 20px;
     margin-bottom: 29px;
   }
 
-  .criandoUmQuizz > input {
+  .criandoUmQuizz > input,
+  .criarPerguntas > input,
+  .quizzNiveis > input {
     margin-top: 29px;
     width: 324px;
     font-size: 18px;

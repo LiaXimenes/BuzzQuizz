@@ -47,11 +47,17 @@ function checkImgOnline(imageUrl){
         return false;
     }   
 }
+// variáveis globais que vão servir quando criar o quizz
 
 let urlimagemQuizzCriado;
 let tituloDoQuizzCriado;
 let qtdDePerguntasQuizzCriado;
 let qtdDeNiveisQuizzCriado;
+
+let arrayPerguntas;
+let arrayNiveis;
+
+//criando o quizz
 
 function crieSuasPerguntas() {
     let listaDeRespostas = document.querySelector(".caixaDePerguntas").children;
@@ -102,6 +108,8 @@ function crieSuasPerguntas() {
     }
 }
 
+// perguntas para o quizz
+
 function colocarPerguntas(elemento,numeroDaPergunta) {
     let abrirCaixa = elemento.parentNode.parentNode;
     console.log(abrirCaixa);
@@ -124,9 +132,11 @@ function colocarPerguntas(elemento,numeroDaPergunta) {
             <input type="text" value="" placeholder="URL da imagem 3">`
 }
 
+// ir para a parte de criar níveis
+
 function crieSeusNiveis() {
 
-    let arrayPerguntas = [];
+    arrayPerguntas = [];
     for(let i = 0; i <qtdDePerguntasQuizzCriado; i++){
         let listaDePerguntas = document.querySelector(`.pergunta${i}`).children;
 
@@ -141,7 +151,8 @@ function crieSeusNiveis() {
         let respostaIncorreta3 = listaDePerguntas[11].value;
         let urlRespostaIncorreta3 = listaDePerguntas[12].value;
 
-        let textoDaPerguntaCerto = textoDaPergunta.length >= 20;
+        // condições para ir para a próxima página
+        let textoDaPerguntaCerto = textoDaPergunta.length >= 20 && textoDaPergunta != null;
         let corDeFundoCerta = corDeFundo[0] =="#" && corDeFundo.length == 7;
         let corDeFundoHexa1 = typeof(corDeFundo[1]) == "string" ||typeof(corDeFundo[1]) == "number";
         let corDeFundoHexa2 = typeof(corDeFundo[2]) == "string" ||typeof(corDeFundo[2]) == "number";
@@ -150,42 +161,40 @@ function crieSeusNiveis() {
         let corDeFundoHexa5 = typeof(corDeFundo[5]) == "string" ||typeof(corDeFundo[5]) == "number";
         let corDeFundoHexa6 = typeof(corDeFundo[6]) == "string" ||typeof(corDeFundo[6]) == "number";
         let urlCorreta = checkImgOnline(urlDaImagemCorreta) && checkImgOnline(urlRespostaIncorreta1) && checkImgOnline(urlRespostaIncorreta2) && checkImgOnline(urlRespostaIncorreta3);
+        let respostaCorretaCerto = respostaCorreta != null;
+        let respostaInconrretaCerto = respostaIncorreta1 !=null || respostaIncorreta2 != null || respostaIncorreta3!= null;
 
-        if(textoDaPerguntaCerto && corDeFundoCerta && corDeFundoHexa1 && corDeFundoHexa2 && corDeFundoHexa3 && corDeFundoHexa4 && corDeFundoHexa5 && corDeFundoHexa6 && urlCorreta){
+
+
+        if(textoDaPerguntaCerto && corDeFundoCerta && corDeFundoHexa1 && corDeFundoHexa2 && corDeFundoHexa3 && corDeFundoHexa4 && corDeFundoHexa5 && corDeFundoHexa6 && urlCorreta && respostaCorretaCerto && respostaInconrretaCerto){
             arrayPerguntas.push({title: textoDaPergunta, color: corDeFundo,answers:[{text: respostaCorreta, image: urlDaImagemCorreta, isCorrectAnswer: true},{text: respostaIncorreta1, image: urlRespostaIncorreta1, isCorrectAnswer: false},{text: respostaIncorreta2, image: urlRespostaIncorreta2, isCorrectAnswer: false},{text: respostaIncorreta3, image: urlRespostaIncorreta3, isCorrectAnswer: false}]})
+        
+            let paginaDePerguntas = document.querySelector(".criarPerguntas");
+            paginaDePerguntas.classList.add("escondido");
+        
+            let paginaDeQuizz = document.querySelector(".quizzNiveis");
+            paginaDeQuizz.classList.remove("escondido");
+        
+            let niveis = document.querySelector(".quizzNiveis");
+            let numeroDeNiveis = "";
+        
+            for(let i = 0; i < qtdDeNiveisQuizzCriado; i++){
+                numeroDeNiveis +=`
+                <div class="caixaDeNiveis nivel${i}">
+                <div class="nivelCriado">
+                            <p>Nível ${i+1}</p>
+                            <ion-icon onclick="abrirNiveis(this,${i})" name="create-outline"></ion-icon>
+                        </div></div>`
+            
+            }
+            niveis.innerHTML = numeroDeNiveis+`<input onclick="quizzCriado()" type="button" value="Finalizar Quizz"> 
+            `;
+        }
+        else{
+            alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
         }
 
-    }
- 
-    
-
-    let paginaDePerguntas = document.querySelector(".criarPerguntas");
-    paginaDePerguntas.classList.add("escondido");
-
-    let paginaDeQuizz = document.querySelector(".quizzNiveis");
-    paginaDeQuizz.classList.remove("escondido");
-
-    let niveis = document.querySelector(".quizzNiveis");
-    let numeroDeNiveis = "";
-
-    for(let i = 0; i < qtdDeNiveisQuizzCriado; i++){
-        numeroDeNiveis +=`
-        <div class="caixaDeNiveis nivel${i}">
-        <div class="nivelCriado">
-                    <p>Nível ${i+1}</p>
-                    <ion-icon onclick="abrirNiveis(this,${i})" name="create-outline"></ion-icon>
-                </div></div>`
-    
-    }
-    niveis.innerHTML = numeroDeNiveis+`<input onclick="quizzCriado()" type="button" value="Finalizar Quizz"> 
-    `;
-    
-    
-
-    //else{
-      //  alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
-    //}
-    
+    }  
 }
 
 function abrirNiveis(elemento,numeroDoQuizz) {
@@ -202,10 +211,12 @@ function abrirNiveis(elemento,numeroDoQuizz) {
             <input type="text" value="" placeholder="Descrição do nível">`
 }
 
+// quizz criado
+
 function quizzCriado() {
 
 
-    let arrayDeRespostas = [];
+    arrayNiveis = [];
     for(let i = 0; i <qtdDeNiveisQuizzCriado; i++){
         let listaDeNiveis = document.querySelector(`.nivel${i}`).children;
 
@@ -222,7 +233,7 @@ function quizzCriado() {
 
 
         if(tituloNivelCerto && acertoMinCerto && urlDaImagemCerto && descricaoCerta){
-            arrayDeRespostas.push({title: tituloDoNivel, image: urlDaImagem, text: descricao, minValue: acertoMinimo});
+            arrayNiveis.push({title: tituloDoNivel, image: urlDaImagem, text: descricao, minValue: acertoMinimo});
 
         }
         else{
@@ -233,6 +244,16 @@ function quizzCriado() {
 
     for(let i = 0; i < arrayDeRespostas.length; i++){
         if(arrayDeRespostas[i].minValue == 0){
+            //colocando tudo no servidor
+            const dados = {
+                title: tituloDoQuizzCriado,
+                image: urlimagemQuizzCriado
+                questions: arrayPerguntas,
+                levels: arrayNiveis
+            }
+            const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes", dados);
+
+            // abrindo a última página
             let paginaDeQuizz = document.querySelector(".quizzNiveis");
             paginaDeQuizz.classList.add("escondido");
         
@@ -254,6 +275,7 @@ function quizzCriado() {
 
 function voltarHome() {
     let finalizarQuizz = document.querySelector(".quizzPronto");
+    console.log(finalizarQuizz);
     finalizarQuizz.classList.add("escondido"); 
 
     let adicionarQuizzEscondido = document.querySelector(".criarQuizz");
