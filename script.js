@@ -247,7 +247,7 @@ function quizzCriado() {
             //colocando tudo no servidor
             const dados = {
                 title: tituloDoQuizzCriado,
-                image: urlimagemQuizzCriado
+                image: urlimagemQuizzCriado,
                 questions: arrayPerguntas,
                 levels: arrayNiveis
             }
@@ -271,6 +271,10 @@ function quizzCriado() {
     }  
     
     alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
+}
+
+function irParaQuizzCriado() {
+    //vou fazer hoje
 }
 
 function voltarHome() {
