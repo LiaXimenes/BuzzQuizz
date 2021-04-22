@@ -304,12 +304,12 @@ function irParaQuizz(elemento){
 }
 
 function chamandoQuizzEscolhido(){
-    const retorno = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/1");
-    retorno.then(montandoQuizzEscolhido)
+    const retorno = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/${ID}`);
+    retorno.then(montandoQuizzEscolhido);
 }
 
 function montandoQuizzEscolhido(conteudo){
-    console.log(conteudo.data.questions[0].answers);
+    console.log(conteudo);
 
     let addFotoFundo = document.querySelector(".fotoDeFundo")
     addFotoFundo.innerHTML += `
@@ -318,31 +318,73 @@ function montandoQuizzEscolhido(conteudo){
 
     let addPerguntas = document.querySelector(".conteiner")
 
-   // for(let i = 0; i < conteudo.data.questions[0].answers.length; i++){//
-        addPerguntas.innerHTML += `
-        <div class="conteinerDePerguntas" >
-        <span class="pergunta">${conteudo.data.questions[0].title}</span>
-        <ul>
-            <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[0].answers[0].image}" onclick="escolhida(this)">
-                <span><strong>${conteudo.data.questions[0].answers[0].text}</strong></span>
-            </li>
-            <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[0].answers[1].image}" onclick="escolhida(this)">
-                <span><strong>${conteudo.data.questions[0].answers[1].text}</strong></span>
-            </li>
-            <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[0].answers[2].image}" onclick="escolhida(this)">
-                <span><strong>${conteudo.data.questions[0].answers[2].text}</strong></span>
-            </li>
-            <li class="opcaoDeImg">
-                <img src="${conteudo.data.questions[0].answers[3].image}" onclick="escolhida(this)">
-                <span><strong>${conteudo.data.questions[0].answers[3].text}</strong></span>
-            </li>
-        </ul>
-        </div>`
-        
-    //}//
+    if(conteudo.data.questions[0].answers.length === 4){
+        for(let i = 0; i < conteudo.data.questions.length; i++){
+            addPerguntas.innerHTML += `
+            <div class="conteinerDePerguntas" >
+            <span class="pergunta">${conteudo.data.questions[i].title}</span>
+            <ul>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answers[0].image}" onclick="escolhida(this)">
+                    <span><strong>${conteudo.data.questions[i].answers[0].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answers[1].image}" onclick="escolhida(this)">
+                    <span><strong>${conteudo.data.questions[i].answers[1].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answers[2].image}" onclick="escolhida(this)">
+                    <span><strong>${conteudo.data.questions[i].answers[2].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answers[3].image}" onclick="escolhida(this)">
+                    <span><strong>${conteudo.data.questions[i].answers[3].text}</strong></span>
+                </li>
+            </ul>
+            </div>`
+            
+        }
+    } else if (conteudo.data.questions[0].answers.length === 3){
+        for(let i = 0; i < conteudo.data.questions.length; i++){
+            addPerguntas.innerHTML += `
+            <div class="conteinerDePerguntas" >
+            <span class="pergunta">${conteudo.data.questions[i].title}</span>
+            <ul>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answers[0].image}" onclick="escolhida(this)">
+                    <span><strong>${conteudo.data.questions[i].answers[0].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answers[1].image}" onclick="escolhida(this)">
+                    <span><strong>${conteudo.data.questions[i].answers[1].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answers[2].image}" onclick="escolhida(this)">
+                    <span><strong>${conteudo.data.questions[i].answers[2].text}</strong></span>
+                </li>
+            </ul>
+            </div>`
+        }
+    } else if (conteudo.data.questions[0].answers.length === 2){
+        for(let i = 0; i < conteudo.data.questions.length; i++){
+            addPerguntas.innerHTML += `
+            <div class="conteinerDePerguntas" >
+            <span class="pergunta">${conteudo.data.questions[i].title}</span>
+            <ul>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answers[0].image}" onclick="escolhida(this)">
+                    <span><strong>${conteudo.data.questions[i].answers[0].text}</strong></span>
+                </li>
+                <li class="opcaoDeImg">
+                    <img src="${conteudo.data.questions[i].answers[1].image}" onclick="escolhida(this)">
+                    <span><strong>${conteudo.data.questions[i].answers[1].text}</strong></span>
+                </li>
+            </ul>
+            </div>`
+        }
+    }
+
+    
 
 //colocar a porcentagem de acerto e achar indice representante//
 
@@ -376,5 +418,4 @@ function voltarHome(){
 
 function escolhida(imagem){
     imagem.classList.toggle("opacidade")
-   
 }
