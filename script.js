@@ -399,9 +399,7 @@ function montandoQuizzEscolhido(conteudo){
         }
     }
 
-    
-
-//colocar a porcentagem de acerto e achar indice representante//
+    //colocar a porcentagem de acerto e achar indice representante//
 
     let addResultado = document.querySelector(".conteirerResultado");
 
@@ -414,10 +412,19 @@ function montandoQuizzEscolhido(conteudo){
         <li><strong>${conteudo.data.levels[1].text}</strong> 
         </li>
     </ul>`
+
+    // respostaCorreta(){
+    //      if (isCorrectAnswer === true){
+    //        trocar a cor das outras imagens e mostrar a cor
+    //        setTimeOut(ScrollIntoView, 2000) após mostrar resposta
+    //    }
+    //} 
+
+
+
 }
 
 function reiniciarQuizz(){
-
 }
 
 function voltarHome(){
