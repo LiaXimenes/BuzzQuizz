@@ -8,10 +8,12 @@ function carregarPaginaPrincipal() {
 function processarQuizz(resposta) {
     let ul = document.querySelector(".todosQuizzes ul");
 	
+   
+
     for(let i = 0; i < resposta.data.length; i++){
         ul.innerHTML += `
         <li class="quizz"> 
-                <img src="${resposta.data[i].image}" onclick="irParaQuizz(this)">
+                <img src="${resposta.data[i].image}" id="${resposta.data[i].id}" onclick="irParaQuizz(this)">
                 <span class="descricaoDoQuizz">${resposta.data[i].title}</span>
         </li>`
     }
@@ -298,14 +300,11 @@ function voltarHome() {
 
 function irParaQuizz(elemento){
     sumirTelaPrincipal();
-    chamandoQuizzEscolhido();
 
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.remove("escondido")
-}
 
-function chamandoQuizzEscolhido(){
-    const retorno = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/${ID}`);
+    const retorno = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/${elemento.id}`);
     retorno.then(montandoQuizzEscolhido);
 }
 
