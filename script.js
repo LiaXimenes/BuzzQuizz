@@ -139,7 +139,7 @@ function crieSeusNiveis() {
 
     for(let i = 0; i < qtdDeNiveisQuizzCriado; i++){
         numeroDeNiveis +=`
-        <div class="caixaDeNiveis">
+        <div class="caixaDeNiveis nivel${i}">
         <div class="nivelCriado">
                     <p>Nível ${i+1}</p>
                     <ion-icon onclick="abrirNiveis(this,${i})" name="create-outline"></ion-icon>
@@ -172,17 +172,52 @@ function abrirNiveis(elemento,numeroDoQuizz) {
 }
 
 function quizzCriado() {
-    let paginaDeQuizz = document.querySelector(".quizzNiveis");
-    paginaDeQuizz.classList.add("escondido");
 
-    let finalizarQuizz = document.querySelector(".quizzPronto");
-    finalizarQuizz.classList.remove("escondido");  
+
+    let arrayDeRespostas = [];
+    for(let i = 0; i <qtdDeNiveisQuizzCriado; i++){
+        let listaDeNiveis = document.querySelector(`.nivel${i}`).children;
+
+        let tituloDoNivel = listaDeNiveis[1].value;
+        let acertoMinimo = listaDeNiveis[2].value;
+        let urlDaImagem = listaDeNiveis[3].value;
+        let descricao = listaDeNiveis[4].value;
+
+
+        let tituloNivelCerto = tituloDoNivel.length > 10;
+        let acertoMinCerto = parseInt(acertoMinimo) <= 100 && parseInt(acertoMinimo) >= 0;
+        let urlDaImagemCerto = checkImgOnline(urlDaImagem);
+        let descricaoCerta = descricao.length > 30;
+
+
+        if(tituloNivelCerto && acertoMinCerto && urlDaImagemCerto && descricaoCerta){
+            arrayDeRespostas.push({title: tituloDoNivel, image: urlDaImagem, text: descricao, minValue: acertoMinimo});
+
+        }
+        else{
+            alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
+        }
+    }
+
+    for(let i = 0; i < arrayDeRespostas.length; i++){
+        if(arrayDeRespostas[i].minValue == 0){
+            let paginaDeQuizz = document.querySelector(".quizzNiveis");
+            paginaDeQuizz.classList.add("escondido");
+        
+            let finalizarQuizz = document.querySelector(".quizzPronto");
+            finalizarQuizz.classList.remove("escondido");  
+            
+            let informacoesDoQuizz = document.querySelector(".imagemQuizzPronto")
+            informacoesDoQuizz.innerHTML = `
+                <div><img src="${urlimagemQuizzCriado}" alt=""> </div>
+                <p>${tituloDoQuizzCriado}</p>
+            `
+            return "concluiu quizz"
+        }
+        
+    }  
     
-    let informacoesDoQuizz = document.querySelector(".imagemQuizzPronto")
-    informacoesDoQuizz.innerHTML = `
-        <div><img src="${urlimagemQuizzCriado}" alt=""> </div>
-        <p>${tituloDoQuizzCriado}</p>
-    `
+    alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
 }
 
 function voltarHome() {
