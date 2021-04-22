@@ -192,6 +192,7 @@ function crieSeusNiveis() {
         }
         else{
             alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
+            return ("deu errado :(")
         }
 
     }  
