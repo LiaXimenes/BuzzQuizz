@@ -243,7 +243,7 @@ function quizzCriado() {
     }
 
     for(let i = 0; i < arrayDeRespostas.length; i++){
-        if(arrayDeRespostas[i].minValue == 0){
+        if(arrayNiveis[i].minValue == 0){
             //colocando tudo no servidor
             const dados = {
                 title: tituloDoQuizzCriado,
