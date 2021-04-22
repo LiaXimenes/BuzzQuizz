@@ -337,7 +337,7 @@ function montandoQuizzEscolhido(conteudo){
         for(let i = 0; i < conteudo.data.questions.length; i++){
             addPerguntas.innerHTML += `
             <div class="conteinerDePerguntas" >
-            <span class="pergunta">${conteudo.data.questions[i].title}</span>
+            <span class="pergunta" style="background-color: ${conteudo.data.questions[i].color}">${conteudo.data.questions[i].title}</span>
             <ul>
                 <li class="opcaoDeImg">
                     <img src="${conteudo.data.questions[i].answers[0].image}" onclick="escolhida(this)">
