@@ -100,7 +100,7 @@ function crieSuasPerguntas() {
             </div>`
         
         }
-        perguntas.innerHTML = numeroDePerguntas +`<input onclick="crieSeusNiveis()" type="button" value="Prosseguir para criar níveis">`
+        perguntas.innerHTML = `<p>Crie suas perguntas</p>` + numeroDePerguntas +`<input onclick="crieSeusNiveis()" type="button" value="Prosseguir para criar níveis">`
         }
 
     else{
@@ -187,7 +187,7 @@ function crieSeusNiveis() {
                         </div></div>`
             
             }
-            niveis.innerHTML = numeroDeNiveis+`<input onclick="quizzCriado()" type="button" value="Finalizar Quizz"> 
+            niveis.innerHTML = `<p>Agora, decida os níveis</p>`+numeroDeNiveis+`<input onclick="quizzCriado()" type="button" value="Finalizar Quizz"> 
             `;
         }
         else{
