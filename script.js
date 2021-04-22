@@ -242,7 +242,7 @@ function quizzCriado() {
         }
     }
 
-    for(let i = 0; i < arrayDeRespostas.length; i++){
+    for(let i = 0; i < arrayNiveis.length; i++){
         if(arrayNiveis[i].minValue == 0){
             //colocando tudo no servidor
             const dados = {
