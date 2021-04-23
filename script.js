@@ -504,6 +504,6 @@ function voltarHome(){
     const scrollParaCima = document.querySelector('.criarQuizz');
     scrollParaCima.scrollIntoView();
 
-
+    carregarCriarQuizz();
 }
 
