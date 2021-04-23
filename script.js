@@ -317,7 +317,19 @@ function quizzCriado() {
 }
 
 function irParaQuizzCriado() {
-    //vou fazer hoje
+    const promessa = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes");
+    promessa.then(processarQuizzCriado);
+}
+
+function processarQuizzCriado(resposta) {
+    for(let i = 0; i < resposta.data.length; i++){
+        const quizzSerializado = localStorage.getItem("listaDeQuizz");
+        const listaDeQuizz = JSON.parse(quizzSerializado); 
+        if(resposta.data[i].image == listaDeQuizz.image && resposta.data[i].title == listaDeQuizz.title){
+            const retorno = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/${resposta.data[i].id}`);
+            retorno.then(montandoQuizzEscolhido);
+        }
+}
 }
 
 function carregarCriarQuizz() {
@@ -327,7 +339,6 @@ function carregarCriarQuizz() {
 
         let adicionarQuizzEscondido = document.querySelector(".quizzesAdicionados");
         adicionarQuizzEscondido.classList.remove("escondido");
-
     }
 }
 
