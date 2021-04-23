@@ -407,7 +407,7 @@ function montandoQuizzEscolhido(conteudo){
     if(conteudo.data.questions[0].answers.length === 4){
         for(let i = 0; i < conteudo.data.questions.length; i++){
             addPerguntas.innerHTML += `
-            <div class="conteinerDePerguntas" >
+            <div class="conteinerDePerguntas pergunta${i}" >
             <span class="pergunta" style="background-color: ${conteudo.data.questions[i].color}">${conteudo.data.questions[i].title}</span>
             <ul class = "ullis">
                 <li class="opcaoDeImg ${conteudo.data.questions[i].answers[0].isCorrectAnswer}" onclick="escolhida(this)">
@@ -433,7 +433,7 @@ function montandoQuizzEscolhido(conteudo){
     } else if (conteudo.data.questions[0].answers.length === 3){
         for(let i = 0; i < conteudo.data.questions.length; i++){
             addPerguntas.innerHTML += `
-            <div class="conteinerDePerguntas" >
+            <div class="conteinerDePerguntas pergunta${i}" >
             <span class="pergunta">${conteudo.data.questions[i].title}</span>
             <ul class = "ullis">
                 <li class="opcaoDeImg ${conteudo.data.questions[i].answers[0].isCorrectAnswer}" onclick="escolhida(this)">
@@ -454,7 +454,7 @@ function montandoQuizzEscolhido(conteudo){
     } else if (conteudo.data.questions[0].answers.length === 2){
         for(let i = 0; i < conteudo.data.questions.length; i++){
             addPerguntas.innerHTML += `
-            <div class="conteinerDePerguntas" >
+            <div class="conteinerDePerguntas pergunta${i}" >
             <span class="pergunta">${conteudo.data.questions[i].title}</span>
             <ul class = "ullis">
                 <li class="opcaoDeImg ${conteudo.data.questions[i].answers[0].isCorrectAnswer}" onclick="escolhida(this)">
@@ -503,8 +503,15 @@ function escolhida(retorno){
     }
 
     retorno.classList.remove("opacidade");
-    //setTimeout(intervalo, 2000)
+
+    console.log(retorno.parentNode.nextElementSibling);
+
+    setTimeout(function (){
+        retorno.parentNode.parentNode.nextElementSibling.scrollIntoView({behavior: 'smooth', block:'center'})
+    }, 2000);
 }
+
+
 
 
 
@@ -512,12 +519,13 @@ function reiniciarQuizz(){
     const scrollParaCima = document.querySelector('.fotoDeFundo');
     scrollParaCima.scrollIntoView();
 
-    const paisUl = document.querySelector(".ullis");
+    const lis = document.querySelector(".ullis");
     const filhosDosUl = paisUl.children;
 
-    filhosDosUl.classList.remove("verde vermelho opacidade");
-    filhosDosUl.setAttribute("", "onclick");
+    console.log(filhosDosUl)
 
+    filhosDosUl.classList.remove("opacidade");
+    filhosDosUl.setAttribute("", "onclick");
 
 
 }
