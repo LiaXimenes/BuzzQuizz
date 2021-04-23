@@ -13,7 +13,9 @@ function processarQuizz(resposta) {
    
 
     for(let i = 0; i < resposta.data.length; i++){
-        const quizzSerializado = localStorage.getItem("listaDeQuizz");
+
+        if(localStorage.length != 0){
+            const quizzSerializado = localStorage.getItem("listaDeQuizz");
         const listaDeQuizz = JSON.parse(quizzSerializado); 
         if(resposta.data[i].image == listaDeQuizz.image && resposta.data[i].title == listaDeQuizz.title){
             let quizzesCriados = document.querySelector(".quizzesAdicionados").children;
@@ -32,6 +34,15 @@ function processarQuizz(resposta) {
 
             quizzesCriados[1].innerHTML +=  ul 
         }
+        else{
+            ul.innerHTML += `
+        <li class="quizz"> 
+                <img src="${resposta.data[i].image}" id="${resposta.data[i].id}" onclick="irParaQuizz(this)">
+                <span class="descricaoDoQuizz">${resposta.data[i].title}</span>
+        </li>`
+        }
+        }
+ 
         else{
             ul.innerHTML += `
         <li class="quizz"> 
