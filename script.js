@@ -15,32 +15,30 @@ function processarQuizz(resposta) {
     for(let i = 0; i < resposta.data.length; i++){
 
         if(localStorage.length != 0){
-            const quizzSerializado = localStorage.getItem("listaDeQuizz");
-        const listaDeQuizz = JSON.parse(quizzSerializado); 
-        if(resposta.data[i].image == listaDeQuizz.image && resposta.data[i].title == listaDeQuizz.title){
-            let quizzesCriados = document.querySelector(".quizzesAdicionados").children;
-            let ul = "";
-
-            const quizzSerializado = localStorage.getItem("listaDeQuizz");
-            const listaDeQuizz = JSON.parse(quizzSerializado);     
+            for(let j = 0; j < localStorage.length; j++){
+                let quizzIDlocalStorage = localStorage.key(j);
+                let quizzID = localStorage.getItem(quizzIDlocalStorage);
+                if(quizzID == resposta.data[i].id){
+                    let quizzesCriados = document.querySelector(".quizzesAdicionados").children;
+                    let ul = "";  
+                            
+                    ul = `<li class="quizz"> 
+                            <img src="${resposta.data[i].image}" onclick="irParaQuizz(this)" id="${resposta.data[i].id}">
+                            <span class="descricaoDoQuizz">${resposta.data[i].title}</span>
+                       </li>` + ul
+                    
         
-
-        
-            ul = `<li class="quizz"> 
-                    <img src="${listaDeQuizz.image}" onclick="irParaQuizz(this)" id="${resposta.data[i].id}">
-                    <span class="descricaoDoQuizz">${listaDeQuizz.title}</span>
-               </li>` + ul
-            
-
-            quizzesCriados[1].innerHTML +=  ul 
-        }
-        else{
-            ul.innerHTML += `
-        <li class="quizz"> 
-                <img src="${resposta.data[i].image}" id="${resposta.data[i].id}" onclick="irParaQuizz(this)">
-                <span class="descricaoDoQuizz">${resposta.data[i].title}</span>
-        </li>`
-        }
+                    quizzesCriados[1].innerHTML +=  ul 
+                }
+                else{
+                    ul.innerHTML += `
+                <li class="quizz"> 
+                        <img src="${resposta.data[i].image}" id="${resposta.data[i].id}" onclick="irParaQuizz(this)">
+                        <span class="descricaoDoQuizz">${resposta.data[i].title}</span>
+                </li>`
+                }
+            }
+                    
         }
  
         else{
@@ -240,7 +238,7 @@ function crieSeusNiveis() {
         }
         else{
             alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
-            return;
+            break;
         }
 
     }  
@@ -301,11 +299,11 @@ function quizzCriado() {
                 levels: arrayNiveis
             }
 
-            console.log(dados);
             const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes", dados);
             
-            const dadosSerializados = JSON.stringify(dados);
-            localStorage.setItem("listaDeQuizz", dadosSerializados);
+            let resposta = requisicao.then(tratarSucesso)
+            
+
             
             // abrindo a última página
             let paginaDeQuizz = document.querySelector(".quizzNiveis");
@@ -327,10 +325,32 @@ function quizzCriado() {
     alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
 }
 
-function irParaQuizzCriado() {
-    const promessa = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes");
-    promessa.then(processarQuizzCriado);
+function tratarSucesso(resposta) {
+    console.log("deu certo")
+    localStorage.setItem(`quizz${resposta.data.id}`, JSON.stringify(resposta.data.id));
+
+    let acessarQuizz = document.querySelector(".botoesQuizzPronto");
+    acessarQuizz.innerHTML = `<input onclick="irParaQuizz(this)" id="${resposta.data.id}" type="button" value="Acessar Quizz">
+    <p onclick="voltarParaHome()">Voltar para home</p>`
+
+
+            let quizzesCriados = document.querySelector(".quizzesAdicionados").children;
+            let ul = "";
+
+            
+            const quizzResposta = JSON.parse(localStorage.getItem(`quizz${resposta.data.id}`));     
+        
+
+        
+            ul = `<li class="quizz"> 
+                    <img src="${urlimagemQuizzCriado}" onclick="irParaQuizz(this)" id="${quizzResposta}">
+                    <span class="descricaoDoQuizz">${tituloDoQuizzCriado}</span>
+               </li>` + ul
+            
+
+            quizzesCriados[1].innerHTML +=  ul 
 }
+
 
 function processarQuizzCriado(resposta) {
     for(let i = 0; i < resposta.data.length; i++){
@@ -380,6 +400,9 @@ function criarQuizzDeNovo() {
 //ir para quizz escolhido
 
 function irParaQuizz(elemento){
+    let finalizarQuizz = document.querySelector(".quizzPronto");
+    finalizarQuizz.classList.add("escondido"); 
+
     sumirTelaPrincipal();
 
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
