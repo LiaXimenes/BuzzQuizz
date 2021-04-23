@@ -489,6 +489,15 @@ function escolhida(retorno){
 function reiniciarQuizz(){
     const scrollParaCima = document.querySelector('.fotoDeFundo');
     scrollParaCima.scrollIntoView();
+
+    const paisUl = document.querySelector(".ullis");
+    const filhosDosUl = paisUl.children;
+
+    filhosDosUl.classList.remove("verde vermelho opacidade");
+    filhosDosUl.setAttribute("", "onclick");
+
+
+
 }
 
 function voltarHome(){
