@@ -319,6 +319,9 @@ function irParaQuizz(elemento){
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.remove("escondido")
 
+    const scrollParaCima = document.querySelector('.fotoDeFundo');
+    scrollParaCima.scrollIntoView();
+
     const retorno = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/${elemento.id}`);
     retorno.then(montandoQuizzEscolhido);
 }
@@ -326,34 +329,36 @@ function irParaQuizz(elemento){
 function montandoQuizzEscolhido(conteudo){
     console.log(conteudo);
 
-    let addFotoFundo = document.querySelector(".fotoDeFundo")
+    let addFotoFundo = document.querySelector(".fotoDeFundo");
+    addFotoFundo.innerHTML = "";
     addFotoFundo.innerHTML += `
     <img src="${conteudo.data.image}">
     <span>${conteudo.data.title}</span>` 
 
-    let addPerguntas = document.querySelector(".conteiner")
+    let addPerguntas = document.querySelector(".conteiner");
+    addPerguntas.innerHTML = "";
 
     if(conteudo.data.questions[0].answers.length === 4){
         for(let i = 0; i < conteudo.data.questions.length; i++){
             addPerguntas.innerHTML += `
             <div class="conteinerDePerguntas" >
             <span class="pergunta" style="background-color: ${conteudo.data.questions[i].color}">${conteudo.data.questions[i].title}</span>
-            <ul>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answers[0].image}" onclick="escolhida(this)">
-                    <span><strong>${conteudo.data.questions[i].answers[0].text}</strong></span>
+            <ul class = "ullis">
+                <li class="opcaoDeImg ${conteudo.data.questions[i].answers[0].isCorrectAnswer}" onclick="escolhida(this)">
+                    <img src="${conteudo.data.questions[i].answers[0].image}">
+                    <span class="classeTeste"><strong>${conteudo.data.questions[i].answers[0].text}</strong></span>
                 </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answers[1].image}" onclick="escolhida(this)">
-                    <span><strong>${conteudo.data.questions[i].answers[1].text}</strong></span>
+                <li class="opcaoDeImg  ${conteudo.data.questions[i].answers[1].isCorrectAnswer}" onclick="escolhida(this)">
+                    <img src="${conteudo.data.questions[i].answers[1].image}">
+                    <span class="classeTeste"><strong>${conteudo.data.questions[i].answers[1].text}</strong></span>
                 </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answers[2].image}" onclick="escolhida(this)">
-                    <span><strong>${conteudo.data.questions[i].answers[2].text}</strong></span>
+                <li class="opcaoDeImg ${conteudo.data.questions[i].answers[2].isCorrectAnswer}" onclick="escolhida(this)">
+                    <img src="${conteudo.data.questions[i].answers[2].image}">
+                    <span class="classeTeste"><strong>${conteudo.data.questions[i].answers[2].text}</strong></span>
                 </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answers[3].image}" onclick="escolhida(this)">
-                    <span><strong>${conteudo.data.questions[i].answers[3].text}</strong></span>
+                <li class="opcaoDeImg ${conteudo.data.questions[i].answers[3].isCorrectAnswer}" onclick="escolhida(this)">
+                    <img src="${conteudo.data.questions[i].answers[3].image}">
+                    <span class="classeTeste"><strong>${conteudo.data.questions[i].answers[3].text}</strong></span>
                 </li>
             </ul>
             </div>`
@@ -364,18 +369,18 @@ function montandoQuizzEscolhido(conteudo){
             addPerguntas.innerHTML += `
             <div class="conteinerDePerguntas" >
             <span class="pergunta">${conteudo.data.questions[i].title}</span>
-            <ul>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answers[0].image}" onclick="escolhida(this)">
-                    <span><strong>${conteudo.data.questions[i].answers[0].text}</strong></span>
+            <ul class = "ullis">
+                <li class="opcaoDeImg ${conteudo.data.questions[i].answers[0].isCorrectAnswer}" onclick="escolhida(this)">
+                    <img src="${conteudo.data.questions[i].answers[0].image}">
+                    <span class="classeTeste"><strong>${conteudo.data.questions[i].answers[0].text}</strong></span>
                 </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answers[1].image}" onclick="escolhida(this)">
-                    <span><strong>${conteudo.data.questions[i].answers[1].text}</strong></span>
+                <li class="opcaoDeImg  ${conteudo.data.questions[i].answers[1].isCorrectAnswer}" onclick="escolhida(this)">
+                    <img src="${conteudo.data.questions[i].answers[1].image}">
+                    <span class="classeTeste"><strong>${conteudo.data.questions[i].answers[1].text}</strong></span>
                 </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answers[2].image}" onclick="escolhida(this)">
-                    <span><strong>${conteudo.data.questions[i].answers[2].text}</strong></span>
+                <li class="opcaoDeImg ${conteudo.data.questions[i].answers[2].isCorrectAnswer}" onclick="escolhida(this)">
+                    <img src="${conteudo.data.questions[i].answers[2].image}">
+                    <span class="classeTeste"><strong>${conteudo.data.questions[i].answers[2].text}</strong></span>
                 </li>
             </ul>
             </div>`
@@ -385,14 +390,14 @@ function montandoQuizzEscolhido(conteudo){
             addPerguntas.innerHTML += `
             <div class="conteinerDePerguntas" >
             <span class="pergunta">${conteudo.data.questions[i].title}</span>
-            <ul>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answers[0].image}" onclick="escolhida(this)">
-                    <span><strong>${conteudo.data.questions[i].answers[0].text}</strong></span>
+            <ul class = "ullis">
+                <li class="opcaoDeImg ${conteudo.data.questions[i].answers[0].isCorrectAnswer}" onclick="escolhida(this)">
+                    <img src="${conteudo.data.questions[i].answers[0].image}">
+                    <span class="classeTeste"><strong>${conteudo.data.questions[i].answers[0].text}</strong></span>
                 </li>
-                <li class="opcaoDeImg">
-                    <img src="${conteudo.data.questions[i].answers[1].image}" onclick="escolhida(this)">
-                    <span><strong>${conteudo.data.questions[i].answers[1].text}</strong></span>
+                <li class="opcaoDeImg  ${conteudo.data.questions[i].answers[1].isCorrectAnswer}" onclick="escolhida(this)">
+                    <img src="${conteudo.data.questions[i].answers[1].image}">
+                    <span class="classeTeste"><strong>${conteudo.data.questions[i].answers[1].text}</strong></span>
                 </li>
             </ul>
             </div>`
@@ -402,7 +407,7 @@ function montandoQuizzEscolhido(conteudo){
     //colocar a porcentagem de acerto e achar indice representante//
 
     let addResultado = document.querySelector(".conteirerResultado");
-
+    addResultado.innerHTML = "";
     addResultado.innerHTML +=`
     <span class="porcentagemDeAcerto">${conteudo.data.levels[1].title}</span>
     <ul>
@@ -412,19 +417,34 @@ function montandoQuizzEscolhido(conteudo){
         <li><strong>${conteudo.data.levels[1].text}</strong> 
         </li>
     </ul>`
-
-    // respostaCorreta(){
-    //      if (isCorrectAnswer === true){
-    //        trocar a cor das outras imagens e mostrar a cor
-    //        setTimeOut(ScrollIntoView, 2000) após mostrar resposta
-    //    }
-    //} 
-
-
-
 }
 
+function escolhida(retorno){
+    const lista = retorno.parentNode;
+    const listaFilhos = lista.children;
+    
+    for(let i = 0; i < listaFilhos.length; i++){
+        listaFilhos[i].classList.add("opacidade");
+        listaFilhos[i].setAttribute("onclick", "");
+
+        if(listaFilhos[i].classList.contains('true')){
+            const span = listaFilhos[i].querySelector("span");
+            span.classList.add("verde");
+        } else{
+            const span = listaFilhos[i].querySelector("span");
+            span.classList.add("vermelho");
+        }
+    }
+
+    retorno.classList.remove("opacidade");
+    //setTimeout(intervalo, 2000)
+}
+
+
+
 function reiniciarQuizz(){
+    const scrollParaCima = document.querySelector('.fotoDeFundo');
+    scrollParaCima.scrollIntoView();
 }
 
 function voltarHome(){
@@ -436,8 +456,10 @@ function voltarHome(){
 
     let criarQuizz = document.querySelector(".criarQuizz");
     criarQuizz.classList.remove("escondido");
+
+    const scrollParaCima = document.querySelector('.criarQuizz');
+    scrollParaCima.scrollIntoView();
+
+
 }
 
-function escolhida(imagem){
-    imagem.classList.toggle("opacidade")
-}

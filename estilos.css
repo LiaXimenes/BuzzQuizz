@@ -262,6 +262,14 @@ body {
   opacity: 30%;
 }
 
+.verde {
+  color: #009c22;
+}
+
+.vermelho {
+  color: #ff4b4b;
+}
+
 .botaoReiniciar {
   width: 260px;
   height: 52px;
