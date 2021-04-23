@@ -6,16 +6,40 @@ function carregarPaginaPrincipal() {
 }
 
 function processarQuizz(resposta) {
+    carregarCriarQuizz();
+
     let ul = document.querySelector(".todosQuizzes ul");
 	
    
 
     for(let i = 0; i < resposta.data.length; i++){
-        ul.innerHTML += `
+        const quizzSerializado = localStorage.getItem("listaDeQuizz");
+        const listaDeQuizz = JSON.parse(quizzSerializado); 
+        if(resposta.data[i].image == listaDeQuizz.image && resposta.data[i].title == listaDeQuizz.title){
+            let quizzesCriados = document.querySelector(".quizzesAdicionados").children;
+            let ul = "";
+
+            const quizzSerializado = localStorage.getItem("listaDeQuizz");
+            const listaDeQuizz = JSON.parse(quizzSerializado);     
+        
+
+        
+            ul = `<li class="quizz"> 
+                    <img src="${listaDeQuizz.image}" onclick="irParaQuizz(this)" id="${resposta.data[i].id}">
+                    <span class="descricaoDoQuizz">${listaDeQuizz.title}</span>
+               </li>` + ul
+            
+
+            quizzesCriados[1].innerHTML +=  ul 
+        }
+        else{
+            ul.innerHTML += `
         <li class="quizz"> 
                 <img src="${resposta.data[i].image}" id="${resposta.data[i].id}" onclick="irParaQuizz(this)">
                 <span class="descricaoDoQuizz">${resposta.data[i].title}</span>
         </li>`
+        }
+        
     }
     
 }
@@ -23,6 +47,9 @@ function processarQuizz(resposta) {
 function sumirTelaPrincipal() {
     let adicionarQuizzEscondido = document.querySelector(".criarQuizz");
     adicionarQuizzEscondido.classList.add("escondido");
+
+    let QuizzesAdicionadosEscondido = document.querySelector(".quizzesAdicionados");
+    QuizzesAdicionadosEscondido.classList.add("escondido");
 
     let quizzEscondido = document.querySelector(".todosQuizzes");
     quizzEscondido.classList.add("escondido");
@@ -53,6 +80,7 @@ function checkImgOnline(imageUrl){
 
 let urlimagemQuizzCriado;
 let tituloDoQuizzCriado;
+
 let qtdDePerguntasQuizzCriado;
 let qtdDeNiveisQuizzCriado;
 
@@ -159,7 +187,8 @@ function crieSeusNiveis() {
         let urlRespostaIncorreta3 = listaDePerguntas[12].value;
 
         // condições para ir para a próxima página
-        let textoDaPerguntaCerto = textoDaPergunta.length >= 20 && textoDaPergunta != null;
+        let textoDaPerguntaCerto = textoDaPergunta.length >= 20 
+        let textoCerto = textoDaPergunta != null;
         let corDeFundoCerta = corDeFundo[0] =="#" && corDeFundo.length == 7;
         let corDeFundoHexa1 = typeof(corDeFundo[1]) == "string" ||typeof(corDeFundo[1]) == "number";
         let corDeFundoHexa2 = typeof(corDeFundo[2]) == "string" ||typeof(corDeFundo[2]) == "number";
@@ -173,8 +202,9 @@ function crieSeusNiveis() {
 
 
 
-        if(textoDaPerguntaCerto && corDeFundoCerta && corDeFundoHexa1 && corDeFundoHexa2 && corDeFundoHexa3 && corDeFundoHexa4 && corDeFundoHexa5 && corDeFundoHexa6 && urlCorreta && respostaCorretaCerto && respostaInconrretaCerto){
-            arrayPerguntas.push({title: textoDaPergunta, color: corDeFundo,answers:[{text: respostaCorreta, image: urlDaImagemCorreta, isCorrectAnswer: true},{text: respostaIncorreta1, image: urlRespostaIncorreta1, isCorrectAnswer: false},{text: respostaIncorreta2, image: urlRespostaIncorreta2, isCorrectAnswer: false},{text: respostaIncorreta3, image: urlRespostaIncorreta3, isCorrectAnswer: false}]})
+        if(textoCerto && textoDaPerguntaCerto && corDeFundoCerta && corDeFundoHexa1 && corDeFundoHexa2 && corDeFundoHexa3 && corDeFundoHexa4 && corDeFundoHexa5 && corDeFundoHexa6 && urlCorreta && respostaCorretaCerto && respostaInconrretaCerto){
+                       
+            arrayPerguntas.push({title: textoDaPergunta, color: corDeFundo, answers:[{text: respostaCorreta, image: urlDaImagemCorreta, isCorrectAnswer: true},{text: respostaIncorreta1, image: urlRespostaIncorreta1, isCorrectAnswer: false},{text: respostaIncorreta2, image: urlRespostaIncorreta2, isCorrectAnswer: false},{text: respostaIncorreta3, image: urlRespostaIncorreta3, isCorrectAnswer: false}]})
         
             let paginaDePerguntas = document.querySelector(".criarPerguntas");
             paginaDePerguntas.classList.add("escondido");
@@ -199,7 +229,7 @@ function crieSeusNiveis() {
         }
         else{
             alert(`Ocorreu um erro :(\nPreencha os dados novamente`);
-            return ("deu errado :(")
+            return;
         }
 
     }  
@@ -259,8 +289,13 @@ function quizzCriado() {
                 questions: arrayPerguntas,
                 levels: arrayNiveis
             }
-            const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes", dados);
 
+            console.log(dados);
+            const requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes", dados);
+            
+            const dadosSerializados = JSON.stringify(dados);
+            localStorage.setItem("listaDeQuizz", dadosSerializados);
+            
             // abrindo a última página
             let paginaDeQuizz = document.querySelector(".quizzNiveis");
             paginaDeQuizz.classList.add("escondido");
@@ -285,13 +320,22 @@ function irParaQuizzCriado() {
     //vou fazer hoje
 }
 
+function carregarCriarQuizz() {
+    if(localStorage.length != 0){
+        let criarQuizz = document.querySelector(".criarQuizz");
+        criarQuizz.classList.add("escondido");
+
+        let adicionarQuizzEscondido = document.querySelector(".quizzesAdicionados");
+        adicionarQuizzEscondido.classList.remove("escondido");
+
+    }
+}
+
 function voltarParaHome() {
+    carregarCriarQuizz();
     let finalizarQuizz = document.querySelector(".quizzPronto");
     finalizarQuizz.classList.add("escondido"); 
     
-    let adicionarQuizzEscondido = document.querySelector(".quizzesAdicionados");
-    adicionarQuizzEscondido.classList.remove("escondido");
-
     let quizzEscondido = document.querySelector(".todosQuizzes");
     quizzEscondido.classList.remove("escondido");
 
