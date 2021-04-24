@@ -379,8 +379,12 @@ function criarQuizzDeNovo() {
 
 //ir para quizz escolhido
 
+let elementoTeste;
+
 function irParaQuizz(elemento){
     sumirTelaPrincipal();
+
+    elementoTeste = elemento;
 
     let telaDoQuizz = document.querySelector(".quizzEscolhido");
     telaDoQuizz.classList.remove("escondido")
@@ -393,7 +397,8 @@ function irParaQuizz(elemento){
 }
 
 function montandoQuizzEscolhido(conteudo){
-    console.log(conteudo);
+
+    arrayLevels = conteudo.data.levels;
 
     let addFotoFundo = document.querySelector(".fotoDeFundo");
     addFotoFundo.innerHTML = "";
@@ -407,7 +412,7 @@ function montandoQuizzEscolhido(conteudo){
     if(conteudo.data.questions[0].answers.length === 4){
         for(let i = 0; i < conteudo.data.questions.length; i++){
             addPerguntas.innerHTML += `
-            <div class="conteinerDePerguntas pergunta${i}" >
+            <div class="conteinerDePerguntas" >
             <span class="pergunta" style="background-color: ${conteudo.data.questions[i].color}">${conteudo.data.questions[i].title}</span>
             <ul class = "ullis">
                 <li class="opcaoDeImg ${conteudo.data.questions[i].answers[0].isCorrectAnswer}" onclick="escolhida(this)">
@@ -433,7 +438,7 @@ function montandoQuizzEscolhido(conteudo){
     } else if (conteudo.data.questions[0].answers.length === 3){
         for(let i = 0; i < conteudo.data.questions.length; i++){
             addPerguntas.innerHTML += `
-            <div class="conteinerDePerguntas pergunta${i}" >
+            <div class="conteinerDePerguntas" >
             <span class="pergunta">${conteudo.data.questions[i].title}</span>
             <ul class = "ullis">
                 <li class="opcaoDeImg ${conteudo.data.questions[i].answers[0].isCorrectAnswer}" onclick="escolhida(this)">
@@ -454,7 +459,7 @@ function montandoQuizzEscolhido(conteudo){
     } else if (conteudo.data.questions[0].answers.length === 2){
         for(let i = 0; i < conteudo.data.questions.length; i++){
             addPerguntas.innerHTML += `
-            <div class="conteinerDePerguntas pergunta${i}" >
+            <div class="conteinerDePerguntas" >
             <span class="pergunta">${conteudo.data.questions[i].title}</span>
             <ul class = "ullis">
                 <li class="opcaoDeImg ${conteudo.data.questions[i].answers[0].isCorrectAnswer}" onclick="escolhida(this)">
@@ -469,25 +474,14 @@ function montandoQuizzEscolhido(conteudo){
             </div>`
         }
     }
-
-    //colocar a porcentagem de acerto e achar indice representante//
-
-    let addResultado = document.querySelector(".conteirerResultado");
-    addResultado.innerHTML = "";
-    addResultado.innerHTML +=`
-    <span class="porcentagemDeAcerto">${conteudo.data.levels[1].title}</span>
-    <ul>
-        <li>
-            <img src="${conteudo.data.levels[1].image}">
-        </li>
-        <li><strong>${conteudo.data.levels[1].text}</strong> 
-        </li>
-    </ul>`
 }
 
+let soma = 0;
+let arrayLevels;
+
 function escolhida(retorno){
-    const lista = retorno.parentNode;
-    const listaFilhos = lista.children;
+    const lista = retorno.parentNode; // isso é = ullis
+    const listaFilhos = lista.children; // isso é os li no ullis
     
     for(let i = 0; i < listaFilhos.length; i++){
         listaFilhos[i].classList.add("opacidade");
@@ -504,29 +498,83 @@ function escolhida(retorno){
 
     retorno.classList.remove("opacidade");
 
-    console.log(retorno.parentNode.nextElementSibling);
-
     setTimeout(function (){
         retorno.parentNode.parentNode.nextElementSibling.scrollIntoView({behavior: 'smooth', block:'center'})
     }, 2000);
+    
+    
+
+    // resultado do quizz//
+
+
+    let buscandoPerguntas = document.querySelector(".conteiner"); //div conteiner
+    let quantidadePerguntas = buscandoPerguntas.children.length; // quantidade de div conteinerdePerguntas dentro da div conteiner
+
+    
+    if (retorno.classList.contains("true")){
+        soma = soma + 1;
+    }
+
+    total = Math.floor((soma/quantidadePerguntas)*100);
+    console.log(total)
+
+
+    for(let i = 0; i < arrayLevels.length; i++){
+        let maior = 0;
+        let maiorIndice = 0;
+        
+        if(arrayLevels[i].minValue == 0){
+            let addResultado = document.querySelector(".conteirerResultado");
+            addResultado.innerHTML = "";
+            addResultado.innerHTML +=`
+            <span class="porcentagemDeAcerto">${total + "% de acertos: " + arrayLevels[i].title}</span>
+            <ul>
+                <li>
+                    <img src="${arrayLevels[i].image}">
+                </li>
+                <li>
+                    <strong>${arrayLevels[i].text}</strong> 
+                </li>
+            </ul>`
+
+        } else if(total >= arrayLevels[i].minValue){
+            if(arrayLevels[i].minValue > maior){
+                maior = arrayLevels[i].minValue;
+                maiorIndice = i;
+            }
+            let addResultado = document.querySelector(".conteirerResultado");
+            addResultado.innerHTML = "";
+            addResultado.innerHTML +=`
+            <span class="porcentagemDeAcerto">${total + "% de acertos: " + arrayLevels[maiorIndice].title}</span>
+            <ul>
+                <li>
+                    <img src="${arrayLevels[maiorIndice].image}">
+                </li>
+                <li>
+                    <strong>${arrayLevels[maiorIndice].text}</strong> 
+                </li>
+            </ul>`
+        }
+    }
+
+
+    console.log(retorno.parentNode.parentNode.parentNode.nextElementSibling)
+    if (retorno == retorno.parentNode.parentNode.parentNode.lastChild){
+        setTimeout(function (){
+            retorno.parentNode.parentNode.parentNode.nextElementSibling.scrollIntoView({behavior: 'smooth', block:'center'})
+        }, 2000);
+
+    }
+
+
+    
 }
-
-
-
-
 
 function reiniciarQuizz(){
     const scrollParaCima = document.querySelector('.fotoDeFundo');
     scrollParaCima.scrollIntoView();
 
-    const lis = document.querySelector(".ullis");
-    const filhosDosUl = paisUl.children;
-
-    console.log(filhosDosUl)
-
-    filhosDosUl.classList.remove("opacidade");
-    filhosDosUl.setAttribute("", "onclick");
-
+    irParaQuizz(elementoTeste);
 
 }
 
