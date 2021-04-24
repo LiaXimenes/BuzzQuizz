@@ -210,7 +210,6 @@ function crieSeusNiveis() {
         let respostaInconrretaCerto = respostaIncorreta1 !=null || respostaIncorreta2 != null || respostaIncorreta3!= null;
 
 
-
         if(textoCerto && textoDaPerguntaCerto && corDeFundoCerta && corDeFundoHexa1 && corDeFundoHexa2 && corDeFundoHexa3 && corDeFundoHexa4 && corDeFundoHexa5 && corDeFundoHexa6 && urlCorreta && respostaCorretaCerto && respostaInconrretaCerto){
                        
             arrayPerguntas.push({title: textoDaPergunta, color: corDeFundo, answers:[{text: respostaCorreta, image: urlDaImagemCorreta, isCorrectAnswer: true},{text: respostaIncorreta1, image: urlRespostaIncorreta1, isCorrectAnswer: false},{text: respostaIncorreta2, image: urlRespostaIncorreta2, isCorrectAnswer: false},{text: respostaIncorreta3, image: urlRespostaIncorreta3, isCorrectAnswer: false}]})
@@ -262,7 +261,6 @@ function abrirNiveis(elemento,numeroDoQuizz) {
 
 function quizzCriado() {
 
-
     arrayNiveis = [];
     for(let i = 0; i <qtdDeNiveisQuizzCriado; i++){
         let listaDeNiveis = document.querySelector(`.nivel${i}`).children;
@@ -303,7 +301,6 @@ function quizzCriado() {
             
             let resposta = requisicao.then(tratarSucesso)
             
-
             
             // abrindo a última página
             let paginaDeQuizz = document.querySelector(".quizzNiveis");
@@ -334,21 +331,21 @@ function tratarSucesso(resposta) {
     <p onclick="voltarParaHome()">Voltar para home</p>`
 
 
-            let quizzesCriados = document.querySelector(".quizzesAdicionados").children;
-            let ul = "";
-
-            
-            const quizzResposta = JSON.parse(localStorage.getItem(`quizz${resposta.data.id}`));     
-        
+        let quizzesCriados = document.querySelector(".quizzesAdicionados").children;
+        let ul = "";
 
         
-            ul = `<li class="quizz"> 
-                    <img src="${urlimagemQuizzCriado}" onclick="irParaQuizz(this)" id="${quizzResposta}">
-                    <span class="descricaoDoQuizz">${tituloDoQuizzCriado}</span>
-               </li>` + ul
-            
+        const quizzResposta = JSON.parse(localStorage.getItem(`quizz${resposta.data.id}`));     
+    
 
-            quizzesCriados[1].innerHTML +=  ul 
+    
+        ul = `<li class="quizz"> 
+                <img src="${urlimagemQuizzCriado}" onclick="irParaQuizz(this)" id="${quizzResposta}">
+                <span class="descricaoDoQuizz">${tituloDoQuizzCriado}</span>
+            </li>` + ul
+        
+
+        quizzesCriados[1].innerHTML +=  ul 
 }
 
 
@@ -524,11 +521,9 @@ function escolhida(retorno){
     setTimeout(function (){
         retorno.parentNode.parentNode.nextElementSibling.scrollIntoView({behavior: 'smooth', block:'center'})
     }, 2000);
-    
-    
+
 
     // resultado do quizz//
-
 
     let buscandoPerguntas = document.querySelector(".conteiner"); //div conteiner
     let quantidadePerguntas = buscandoPerguntas.children.length; // quantidade de div conteinerdePerguntas dentro da div conteiner
@@ -540,7 +535,6 @@ function escolhida(retorno){
 
     total = Math.floor((soma/quantidadePerguntas)*100);
     console.log(total)
-
 
     for(let i = 0; i < arrayLevels.length; i++){
         let maior = 0;
@@ -580,17 +574,13 @@ function escolhida(retorno){
         }
     }
 
-
     console.log(retorno.parentNode.parentNode.parentNode.nextElementSibling)
     if (retorno == retorno.parentNode.parentNode.parentNode.lastChild){
         setTimeout(function (){
             retorno.parentNode.parentNode.parentNode.nextElementSibling.scrollIntoView({behavior: 'smooth', block:'center'})
         }, 2000);
-
     }
-
-
-    
+ 
 }
 
 function reiniciarQuizz(){
@@ -598,7 +588,6 @@ function reiniciarQuizz(){
     scrollParaCima.scrollIntoView();
 
     irParaQuizz(elementoTeste);
-
 }
 
 function voltarHome(){
